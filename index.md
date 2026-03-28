@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "Sunquakes"
-  text: "My name is Shing Rui, A full stack developer."
-  tagline: "Embracing AI to make programming easier and faster"
+  name: "Shing Rui"
+  text: "Full Stack Developer"
+  tagline: "Embracing AI for efficient development"
   image:
     src: /assets/logo.png
     alt: Sunquakes 
