@@ -2,7 +2,16 @@
 
 ## Introduction
 
-Hello everyone, my name is Shing, and I’m a full stack developer with expertise in Java, Golang, PHP, JavaScript. For backend development, I’m skilled in using Spring Boot, Hyperf, and Beego frameworks, and the Vue.js framework for front-end development. I also have experience in developing desktop applications using Electron and mobile applications using React Native.
+I'm Shing, a full stack developer with over 10 years of programming experience.
+
+With expertise spanning the entire technology stack, I focus on delivering high-quality solutions through modern practices and tools:
+
+- **Backend**: Java, Golang, PHP
+- **Frontend**: JavaScript, TypeScript, React, Vue.js
+- **Server**: Docker, Kubernetes, Nginx, MySQL, PostgreSQL, Redis
+- **Practice**: Agile Development, CI/CD, Code Review
+
+In this AI-driven era, I embrace the synergy between human creativity and intelligent assistance, leveraging AI-powered tools to enhance code quality and accelerate development while maintaining the craft of thoughtful programming.
 
 ## Contact
 

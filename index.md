@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Sunquakes"
   text: "My name is Shing Rui, A full stack developer."
-  tagline: "Make programming easier and faster"
+  tagline: "Embracing AI to make programming easier and faster"
   image:
     src: /assets/logo.png
     alt: Sunquakes 
@@ -19,18 +19,18 @@ hero:
 
 features:
   - icon: 📤
-    title: Share My Experience
+    title: Share Experience
     details: >
-      Sharing knowledge gained from years of hands-on experience in the field. 
+      Sharing insights from 10+ years of software development.
   - icon: 📚
-    title: Learn New Things
+    title: Continuous Learning
     details: >
-      Learning is a continuous journey, and I am committed to staying updated the technology.
+      Staying current with evolving technologies and best practices.
   - icon: 🔗
-    title: Connect The World
+    title: Connect Developers
     details: >
-      Connecting with fellow developers to foster growth and innovation. 
+      Building communities and fostering collaboration.
   - icon: 🤝
-    title: Collaborate With Others
+    title: Open to Collaboration
     details: >
-      I am always looking for new opportunities to develop innovative projects.
+      Always exploring opportunities for innovative projects.
