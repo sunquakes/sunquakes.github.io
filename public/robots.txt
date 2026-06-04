@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /posts/
+Allow: /about/
+Disallow: /assets/
+Disallow: /.vitepress/
+
+Sitemap: https://sunquakes.com/sitemap.xml
