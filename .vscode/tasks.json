@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docs:dev",
+      "type": "shell",
+      "command": "npm run docs:dev",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": [],
+      "detail": "Start VitePress development server"
+    },
+    {
+      "label": "docs:build",
+      "type": "shell",
+      "command": "npm run docs:build",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": [],
+      "detail": "Build VitePress site for production"
+    },
+    {
+      "label": "docs:preview",
+      "type": "shell",
+      "command": "npm run docs:preview",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": [],
+      "detail": "Preview production build locally"
+    }
+  ]
+}
