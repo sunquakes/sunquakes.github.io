@@ -60,9 +60,9 @@ In this AI-driven era, I embrace the synergy between human creativity and intell
 ## Open for Opportunities
 
 I'm always interested in:
-- 🚀 Innovative projects and startups
-- 🤝 Technical consulting and code reviews
-- 📝 Speaking engagements and tech meetups
-- 🎓 Mentoring aspiring developers
+- 💻 Custom feature development and implementation
+- 🔧 Complex technical problem solving
+- 📦 End-to-end application development
+- ⚡ Performance optimization and refactoring
 
 Feel free to reach out if you'd like to collaborate or discuss technology!
