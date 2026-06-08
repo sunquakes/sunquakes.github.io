@@ -1,6 +1,6 @@
 ---
-title: About Shing Rui - Full Stack Developer | Java, Go, React, Vue Expert
-description: Meet Shing Rui, a full stack developer with 10+ years of experience in Java, Golang, JavaScript, React, Vue, Kubernetes, and Docker. Learn about my technical expertise and development philosophy.
+title: About Shing Rui
+description: Full stack developer building scalable applications. Learn about my journey, expertise, and philosophy.
 ---
 
 # About Shing Rui - Full Stack Developer
@@ -56,15 +56,6 @@ In this AI-driven era, I embrace the synergy between human creativity and intell
     <span><a href="https://github.com/sunquakes" rel="noopener noreferrer" target="_blank">github.com/sunquakes</a></span>
   </div>
 </div>
-
-## Featured Articles
-
-Explore my most popular technical tutorials:
-
-- [Understanding Kubernetes Probes: Liveness vs Readiness](/posts/backend/kubernetes/differences-between-liveness-and-readness-probes) - Master container health checks
-- [ClickHouse Database Operations Guide](/posts/backend/database/clickhouse-database-operations) - Optimize your time-series data
-- [Electron Desktop App Development](/posts/frontend/electron/quickly-create-a-desktop-app) - Build cross-platform apps
-- [Kubernetes Cordon, Drain, and Taint Explained](/posts/backend/kubernetes/differences-between-cordon-and-drain-and-taint) - Node management made simple
 
 ## Open for Opportunities
 
