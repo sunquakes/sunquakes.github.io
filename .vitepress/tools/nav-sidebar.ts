@@ -87,7 +87,11 @@ export default class NavSiderbar {
 
       return this.getFileNameByPath(filePath)
     } catch (error) {
-      console.error(`Error reading file: ${error.message}`)
+      if (error instanceof Error) {
+        console.error(`Error reading file: ${error.message}`)
+      } else {
+        console.error(`Error reading file: ${String(error)}`)
+      }
       return this.getFileNameByPath(filePath)
     }
   }

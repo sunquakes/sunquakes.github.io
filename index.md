@@ -8,7 +8,7 @@ hero:
   tagline: "Embracing AI for efficient development"
   image:
     src: /assets/logo.png
-    alt: Sunquakes - Shing Rui Personal Blog - Full Stack Developer specializing in Java, Go, React, Vue, Kubernetes 
+    alt: Sunquakes
   actions:
     - theme: brand
       text: Explore Technical Articles
@@ -37,37 +37,24 @@ features:
 
 ---
 
-## Welcome to Sunquakes - Your Source for Practical Development Tutorials
+## Welcome to Sunquakes
 
-Discover my latest technical articles covering **backend development**, **frontend frameworks**, **cloud infrastructure**, and **DevOps practices**. Each tutorial is based on real-world experience and designed to help you solve common development challenges.
+A technical blog where I share practical solutions, tutorials, and insights from years of building real-world applications. No fluff, just actionable knowledge you can apply immediately.
 
-### 🔥 Featured Tutorials
+### 💡 What You'll Find Here
 
-#### Backend Development
-- [Mastering ClickHouse Database Operations](/posts/backend/database/clickhouse-database-operations) - Learn advanced ClickHouse queries and optimizations
-- [Getting All Columns from a Table](/posts/backend/database/get-table-all-columns) - Quick reference for database introspection
-- [Java Resources After JAR Packaging](/posts/backend/java/get-resources-file-after-package-jar) - Solve common Java resource loading issues
+- **Problem-Solving Tutorials**: Step-by-step guides for common development challenges
+- **Production-Ready Patterns**: Architecture and design patterns used in high-scale systems
+- **DevOps Best Practices**: Kubernetes, Docker, CI/CD, and infrastructure automation
+- **Frontend & Backend**: From database optimization to responsive UI development
 
-#### Kubernetes & DevOps
-- [Understanding Cordon vs Drain vs Taint](/posts/backend/kubernetes/differences-between-cordon-and-drain-and-taint) - Master Kubernetes node management
-- [Liveness vs Readiness Probes in Kubernetes](/posts/backend/kubernetes/differences-between-liveness-and-readness-probes) - Ensure your applications stay healthy
-- [Fixing Ingress Nginx 404 Errors](/posts/backend/kubernetes/fixed-ingress-nginx-404-error) - Troubleshoot common Kubernetes networking issues
+### 🎯 Why This Blog?
 
-#### Frontend Development
-- [Quickly Create Desktop Apps with Electron](/posts/frontend/electron/quickly-create-a-desktop-app) - Build cross-platform desktop applications
+- Based on **actual production issues** and how I solved them
+- Clear, **no-nonsense explanations** without unnecessary theory
+- **Copy-paste ready** code examples
+- Regular updates with **new discoveries**
 
-#### System Administration
-- [Setting Static IP in Ubuntu](/posts/backend/linux/setting-statics-ip-in-ubuntu) - Configure network settings on Ubuntu servers
-- [Installing NFS Server](/posts/backend/linux/install-nfs) - Set up network file sharing
+### 🚀 Get Started
 
-### 💡 Why Follow Sunquakes?
-
-- **Real-World Experience**: Every article is based on actual production challenges and solutions
-- **Step-by-Step Guides**: Clear, actionable instructions you can follow immediately
-- **Best Practices**: Learn industry-standard patterns and methodologies
-- **Modern Stack**: Focus on current technologies: Java, Golang, JavaScript, TypeScript, React, Vue, Kubernetes, Docker
-- **Full Stack Perspective**: From database optimization to frontend UX, covering the entire development lifecycle
-
-### 🚀 Ready to Level Up Your Development Skills?
-
-Browse all articles or check out my [About page](/about/) to learn more about my background and expertise.
+Browse the [posts directory](/posts/) to find solutions to your current challenges, or learn more [about me](/about/) to see my complete technical background.
