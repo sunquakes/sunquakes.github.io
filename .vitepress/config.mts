@@ -92,7 +92,7 @@ export default defineConfig({
       ]
     })]
   ],
-  title: 'Sunquakes - Full Stack Developer | Java, Go, React, Vue, Kubernetes',
+  title: 'Sunquakes',
   description: 'Expert full stack developer with 10+ years experience. Sharing practical tutorials on Java, Golang, JavaScript, TypeScript, React, Vue, Kubernetes, Docker, and modern web development.',
   lastUpdated: true,
   sitemap: {
