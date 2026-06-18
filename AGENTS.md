@@ -1,5 +1,25 @@
 # AGENTS.md - Article Writing Guidelines
 
+## Article File Naming Conventions
+
+### Core Principle
+
+**Filename MUST match the article title exactly.**
+
+- Use **lowercase** letters
+- Use **hyphens (-)** to separate words
+- The filename should be a direct transformation of the title
+
+**Examples:**
+- ✅ Title: `# Avoid Database Queries in Large Data Loops`
+  - Filename: `avoid-database-queries-in-large-data-loops.md`
+- ✅ Title: `# Optimize Data Sync Script Performance`
+  - Filename: `optimize-data-sync-script-performance.md`
+- ❌ `Optimization_Summary.md` (doesn't match title)
+- ❌ `perf.md` (doesn't match title)
+
+---
+
 ## Article Structure Standards
 
 ### 1. Title Format
@@ -360,6 +380,7 @@ Before [action]:
 Before publishing, verify:
 
 - [ ] Title is action-oriented and specific
+- [ ] Filename follows naming conventions (lowercase, hyphens, descriptive)
 - [ ] Introduction clearly states the problem
 - [ ] All code examples have language identifiers
 - [ ] Good practices marked with ✅
