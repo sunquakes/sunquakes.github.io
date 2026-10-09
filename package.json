@@ -12,8 +12,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.141",
     "@types/node": "^20.14.10",
     "marked": "^13.0.2",
+    "unplugin-icons": "^0.19.3",
     "vitepress": "^1.2.3",
     "vue": "^3.4.31"
   }

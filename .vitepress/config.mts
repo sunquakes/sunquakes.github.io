@@ -1,7 +1,12 @@
 import { defineConfig } from 'vitepress'
+import { createRequire } from 'module'
+import Icons from 'unplugin-icons/vite'
 import NavSiderbar from './tools/nav-sidebar'
 import fs from 'fs'
 import path from 'path'
+
+const require = createRequire(import.meta.url)
+const lucideIcons = require('@iconify-json/lucide/icons.json')
 
 const navSiderbar = new NavSiderbar({
   entry: './posts',
@@ -17,6 +22,19 @@ fs.writeFile('posts' + path.sep + 'index.json', JSON.stringify(sidebar), (err) =
     console.info('Successfully wrote posts list.')
   }
 })
+
+const lucide = lucideIcons as unknown as {
+  icons: Record<string, { body: string }>
+  width?: number
+  height?: number
+}
+
+function lucideToSvg(name: string): string {
+  const icon = lucide.icons[name]
+  if (!icon) return ''
+  const size = lucide.width || 24
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icon.body}</svg>`
+}
 
 export default defineConfig({
   head: [
@@ -113,5 +131,17 @@ export default defineConfig({
     ],
     sidebar: navSiderbar.getSidebar('/posts'),
     socialLinks: [{ icon: 'github', link: 'https://github.com/sunquakes' }]
+  },
+  vite: {
+    plugins: [Icons({ compiler: 'vue3' })]
+  },
+  transformPageData(pageData) {
+    const features = (pageData.frontmatter as Record<string, any>)?.features
+    if (!Array.isArray(features)) return
+    for (const feature of features) {
+      if (typeof feature.icon === 'string' && feature.icon.startsWith('lucide:')) {
+        feature.icon = lucideToSvg(feature.icon.slice('lucide:'.length))
+      }
+    }
   }
 })
