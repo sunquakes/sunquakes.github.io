@@ -27,7 +27,18 @@
 
 **Example:**
 - ❌ `idea-to-a-product.md` (placeholder, does not match the post content)
-- ✅ `anyone-can-be-a-full-stack-developer-now-cli-skill-become-a-programmer-without-writing-code.md`
+- ✅ `anyone-can-be-a-full-stack-developer.md`
+
+### Keep Filenames Short
+
+**Prefer a short filename (roughly 60 characters or fewer) that still captures the post content.**
+
+- Don't copy a long title verbatim — summarize its core idea
+- Long filenames are hard to read and produce unwieldy URLs
+
+**Example:**
+- ❌ `anyone-can-be-a-full-stack-developer-now-cli-skill-become-a-programmer-without-writing-code.md` (too long)
+- ✅ `anyone-can-be-a-full-stack-developer.md`
 
 ---
 
