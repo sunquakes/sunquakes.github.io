@@ -18,6 +18,17 @@
 - ❌ `Optimization_Summary.md` (doesn't match title)
 - ❌ `perf.md` (doesn't match title)
 
+### Keep the Filename Consistent with the Content
+
+**If the title or content changes, rename the file so the filename stays consistent with it.**
+
+- Do NOT keep working or placeholder names once the final title is known
+- The filename drives the generated nav/sidebar link, so a stale name results in an incorrect link
+
+**Example:**
+- ❌ `idea-to-a-product.md` (placeholder, does not match the post content)
+- ✅ `anyone-can-be-a-full-stack-developer-now-cli-skill-become-a-programmer-without-writing-code.md`
+
 ---
 
 ## Article Structure Standards
