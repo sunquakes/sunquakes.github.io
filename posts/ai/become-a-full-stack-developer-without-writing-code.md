@@ -1,4 +1,4 @@
-# Anyone can be a full-stack developer now — CLI + SKILL, become a programmer without writing code
+# Become a full-stack developer without writing code
 
 Building software used to demand a lot before you ever wrote a line that a user
 could see.

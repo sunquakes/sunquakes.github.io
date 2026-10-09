@@ -1,4 +1,4 @@
-# Stop Letting Three.js Scare You Off: Building 3D on the Web Should Feel Like Writing React
+# Build Web 3D with React Components
 
 ![React Three Lite](/assets/frontend/3d/00-logo.png)
 
