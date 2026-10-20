@@ -133,11 +133,31 @@ To signal that more clients exist without naming them, use the `pf-nda` block �
 - When a cover is replaced, swap the file in place or update all three references in the same change; remove the old file so unused assets don't linger
 - Prefer a vector `.svg` cover when the image is an illustrated mockup — it stays sharp at card and detail-page sizes
 
+**Prefer a real cover source; illustrate it only when there is none.**
+
+- If a real source exists — a screenshot, or a frame captured from a supplied video or recording — use it. Capture the frame, commit it under `public/assets/clients-cases/`, and crop it to 16:9 so it lines up with the sibling covers
+- If no real source exists, create an illustration that matches the case — a vector `.svg` mockup of the case's own subject. Do not fabricate a photorealistic screenshot of software that does not exist
+- Whichever route is taken, the result still follows the cover rule above: one local file, one `alt` text, shared by every surface, with unused assets removed
+
 **If a case is a video, the detail page contains only the video.**
 
 - A video case page shows exactly: the page title, the `<video>` block and the back link — nothing else
 - No intro paragraph and no text sections (challenge, result, write-up) on a video case page
 - Image-based case pages follow the normal structure: intro, media, The challenge, Result
+
+**An image case has exactly two sections: The challenge and Result.**
+
+- Every image case page is: intro paragraph, cover media, `## The challenge`, then `## Result` — nothing in between
+- Never add a "What we built" or feature-list section — the case states the problem and the outcome, not an inventory of features
+- `## The challenge` lists the concrete problems in the client's situation; `## Result` lists what changed, each point traceable to a challenge above
+- Keep the intro to one short paragraph and finish with the `← Back to Clients & Cases` `pf-btn` link
+
+**The home page features exactly three cases.**
+
+- `clients-cases/index.md` lists **every** case; the home page (`index.md`) shows only **three**, as a curated selection
+- Never let the home page grow past three case cards — when a case is added, swap one out rather than appending
+- Keep the trio spread across different service categories, and reuse the same cover (image or video) and the same `data-case-study` path as the listing page
+- When a case is added, renamed, or removed, update the home page trio in the same change
 
 ---
 
