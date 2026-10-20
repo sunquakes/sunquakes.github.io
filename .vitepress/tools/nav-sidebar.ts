@@ -65,7 +65,23 @@ export default class NavSiderbar {
   getFilterCurFolder(path: string): string[] {
     return this.getCurDirs(path)
       .sort()
-      .filter((item) => !this.options.ignoreFolders?.includes(this.getDirNameByPath(item)))
+      .filter((item) => {
+        const dirName = this.getDirNameByPath(item)
+        if (this.options.ignoreFolders?.includes(dirName)) return false
+        return this.hasMarkdownFile(item)
+      })
+  }
+
+  hasMarkdownFile(dir: string): boolean {
+    return readdirSync(dir).some((item: string) => {
+      if (this.options.ignoreFolders?.includes(item)) return false
+      const itemPath = path.join(dir, item)
+      if (statSync(itemPath).isDirectory()) {
+        return this.hasMarkdownFile(itemPath)
+      }
+      const suffix = item.slice(item.lastIndexOf('.') + 1)
+      return suffix === 'md' && this.isNotReadme(item)
+    })
   }
 
   getFilterCurMDFile(path: string) {
@@ -187,46 +203,41 @@ export default class NavSiderbar {
       .forEach((dir: string) => {
         const folderText = this.getDirNameByPath(dir)
         const propName = prefixPath + '/' + folderText + '/'
-        const subFolders = this.getFilterCurFolder(dir)
-        const folderItems = subFolders.map((subFolderPath) => {
+        const subFolderItems = this.getFilterCurFolder(dir).map((subFolderPath) => {
           const subText = this.getDirNameByPath(subFolderPath)
-          const subSubFolderName = this.getFilterCurFolder(subFolderPath).map((item) =>
-            this.getDirNameByPath(item)
-          )
           return {
             text: this.formatText(this.capitalizeFirstLetter(subText), 'sidebar', 'dir'),
             collapsible: this.options.isCollapsible,
             collapsed: this.options.collapsed,
-            items: [
-              ...subSubFolderName.map((item) => ({
-                text: this.formatText(this.capitalizeFirstLetter(item), 'sidebar', 'dir'),
-                link: propName + subText + '/' + item + '/'
-              })),
-              ...this.getFilterCurMDFile(subFolderPath)
-                .sort()
-                .map((item) => {
-                  const fullFilePath = subFolderPath + path.sep + item
-                  return {
-                    text: '- ' + this.formatText(this.getTitleFromMDFile(fullFilePath), 'sidebar', 'file'),
-                    link: propName + subText + '/' + this.getFileNameByPath(item)
-                  }
-                })
-            ]
+            items: this.getFilterCurMDFile(subFolderPath)
+              .sort()
+              .map((item) => {
+                const fullFilePath = subFolderPath + path.sep + item
+                return {
+                  text: '- ' + this.formatText(this.getTitleFromMDFile(fullFilePath), 'sidebar', 'file'),
+                  link: propName + subText + '/' + this.getFileNameByPath(item)
+                }
+              })
           }
         })
-        sidebar[propName] = [...folderItems]
-        const subFiles = this.getFilterCurMDFile(dir)
-        if (subFiles.length > 0) {
-          subFiles.reverse().forEach((item) => {
+        const fileItems = this.getFilterCurMDFile(dir)
+          .sort()
+          .reverse()
+          .map((item) => {
             const fullFilePath = dir + path.sep + item
-            if (Array.isArray(sidebar[propName])) {
-              sidebar[propName].unshift({
-                text: '- ' + this.formatText(this.getTitleFromMDFile(fullFilePath), 'sidebar', 'dir'),
-                link: propName + item
-              })
+            return {
+              text: '- ' + this.formatText(this.getTitleFromMDFile(fullFilePath), 'sidebar', 'file'),
+              link: propName + this.getFileNameByPath(item)
             }
           })
-        }
+        sidebar[propName] = [
+          {
+            // Top-level category acts as a fixed, non-collapsible title.
+            // Omitting `collapsible`/`collapsed` removes the toggle caret.
+            text: this.formatText(this.capitalizeFirstLetter(folderText), 'sidebar', 'dir'),
+            items: [...fileItems, ...subFolderItems]
+          }
+        ]
       })
     return sidebar
   }

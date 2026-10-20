@@ -2,150 +2,140 @@
 layout: HomePage
 
 hero:
-  name: "Shing Rui"
-  text: "Full Stack Developer"
-  tagline: "Embracing AI for efficient development"
+  badge: "Custom software studio"
+  name: "Software that saves you hours"
+  highlight: "hours"
+  text: "Small businesses and founders hire us to turn a clear idea into a working product — and to automate the manual work that slows them down."
   image:
-    src: /assets/logo.png
-    alt: Sunquakes
+    src: /assets/clients-cases/saas-customer-management.svg
+    alt: "SaaS customer management dashboard showing accounts, statuses and sales metrics"
+  clients:
+    - name: Haier Thailand
+      logo: /assets/clients/haier.png
+      alt: Haier logo
+    - name: CHINT
+      logo: /assets/clients/chint.png
+      alt: CHINT logo
   actions:
     - theme: brand
-      text: Explore Technical Articles
-      link: /posts/
+      text: Get in touch
+      link: /contact/
     - theme: alt
-      text: View GitHub Profile
-      link: https://github.com/sunquakes
+      text: "View clients & cases"
+      link: /clients-cases/
+
+featuresTitle: "What We Do"
+featuresSubtitle: "Four ways we help small teams ship software that earns its keep."
 
 features:
-  - icon: "lucide:share-2"
-    title: Share Development Experience
-    details: Insights from 10+ years of software development across backend, frontend, and DevOps — learned from real-world projects.
-  - icon: "lucide:book-open"
-    title: Continuous Learning
-    details: Staying current with cloud-native development, AI integration, and modern web frameworks, with tutorials you can apply immediately.
-  - icon: "lucide:users"
-    title: Connect Developers
-    details: Building communities and fostering collaboration among developers worldwide. Join a growing network of tech enthusiasts.
-  - icon: "lucide:handshake"
-    title: Open to Collaboration
-    details: Always exploring opportunities for innovative projects and partnerships. Let's build something amazing together.
-
-marquee:
-  - Java
-  - Golang
-  - TypeScript
-  - React
-  - Vue
-  - Kubernetes
-  - Docker
-  - ClickHouse
-  - DevOps
-  - Node.js
-  - PostgreSQL
-  - Redis
-  - Kafka
-  - gRPC
+  - icon: "lucide:layout-dashboard"
+    title: Custom Business Software
+    details: Bespoke web apps, branded business websites, and scalable backend APIs — with the integrations that connect your existing systems.
+  - icon: "lucide:sparkles"
+    title: AI Business Automation
+    details: Custom AI agents, knowledge-base chatbots, and document processing that cut repetitive manual work from your operations.
+  - icon: "lucide:box"
+    title: 3D Interactive Experiences
+    details: Interactive 3D product viewers, online configurators, and asset pipelines, optimised for smooth delivery in the browser.
+  - icon: "lucide:map"
+    title: GIS & Map Solutions
+    details: Interactive web maps, 3D GIS scenes, and spatial dashboards — with data processing, geocoding, and custom map layers.
 ---
 
 <script setup>
-import IconPuzzle from '~icons/lucide/puzzle'
-import IconLayers from '~icons/lucide/layers'
-import IconSettings from '~icons/lucide/settings'
-import IconCode from '~icons/lucide/code'
-import IconCheck from '~icons/lucide/check'
 import IconArrowRight from '~icons/lucide/arrow-right'
+import WorldMap from './.vitepress/theme/WorldMap.vue'
 </script>
 
-<p class="home-lead">Practical solutions, tutorials, and insights from years of building real-world applications — no fluff, just actionable knowledge you can apply immediately.</p>
+<p class="home-eyebrow">Selected work</p>
 
-## Latest Articles
+## Case Studies
 
-<div class="home-posts">
-  <a class="home-post" href="/posts/frontend/3d/build-web-3d-with-react-components.html">
-    <span class="home-post-tag">Frontend · 3D</span>
-    <span class="home-post-title">Build Web 3D with React Components</span>
-    <span class="home-post-excerpt">Skip the Three.js boilerplate — render scenes, models, and particle effects as composable React components.</span>
-    <span class="home-post-more">Read article <IconArrowRight class="home-post-arrow" /></span>
+<div class="home-projects">
+  <a class="home-project" href="/clients-cases/" data-case-study="/clients-cases/ten-million-order-realtime-display">
+    <span class="home-project-media">
+      <img src="/assets/backend/database/db-batch-query-solution.jpg" alt="Batched query flow between a ClickHouse wide table and MySQL detail tables" loading="lazy" />
+      <span class="home-project-tag">Backend · Data</span>
+    </span>
+    <span class="home-project-body">
+      <span class="home-project-title">Ten-Million-Order Realtime Statistics</span>
+      <span class="home-project-more">Read case study <IconArrowRight class="home-post-arrow" /></span>
+    </span>
   </a>
-  <a class="home-post" href="/posts/ai/become-a-full-stack-developer-without-writing-code.html">
-    <span class="home-post-tag">AI · Coding</span>
-    <span class="home-post-title">Become a Full-Stack Developer Without Writing Code</span>
-    <span class="home-post-excerpt">How AI coding tools collapsed the learning curve — ship a real product end-to-end, from idea to deployment.</span>
-    <span class="home-post-more">Read article <IconArrowRight class="home-post-arrow" /></span>
+  <a class="home-project" href="/clients-cases/" data-case-study="/clients-cases/3d-realtime-display">
+    <span class="home-project-media">
+      <video src="/assets/clients-cases/3d-realtime-display.mp4" autoplay muted loop playsinline></video>
+      <span class="home-project-tag">3D · WebGL</span>
+    </span>
+    <span class="home-project-body">
+      <span class="home-project-title">3D Realtime Display</span>
+      <span class="home-project-more">Read case study <IconArrowRight class="home-post-arrow" /></span>
+    </span>
   </a>
-  <a class="home-post" href="/posts/backend/database/avoid-database-queries-in-loops.html">
-    <span class="home-post-tag">Backend · Database</span>
-    <span class="home-post-title">Avoid Database Queries in Large Data Loops</span>
-    <span class="home-post-excerpt">The N+1 anti-pattern that turns a 10,000-record sync into a slog — and the batch-query patterns that fix it.</span>
-    <span class="home-post-more">Read article <IconArrowRight class="home-post-arrow" /></span>
-  </a>
-  <a class="home-post" href="/posts/backend/kubernetes/differences-between-liveness-and-readness-probes.html">
-    <span class="home-post-tag">Backend · Kubernetes</span>
-    <span class="home-post-title">Differences Between Liveness and Readiness Probes</span>
-    <span class="home-post-excerpt">One restarts your container, the other stops traffic — mixing them up causes cascading failures. Set them right.</span>
-    <span class="home-post-more">Read article <IconArrowRight class="home-post-arrow" /></span>
+  <a class="home-project" href="/clients-cases/" data-case-study="/clients-cases/saas-customer-management-system">
+    <span class="home-project-media">
+      <img src="/assets/clients-cases/saas-customer-management.svg" alt="SaaS customer management dashboard showing accounts, statuses and sales metrics" loading="lazy" />
+      <span class="home-project-tag">SaaS · Full-Stack</span>
+    </span>
+    <span class="home-project-body">
+      <span class="home-project-title">SaaS Customer Management System</span>
+      <span class="home-project-more">Read case study <IconArrowRight class="home-post-arrow" /></span>
+    </span>
   </a>
 </div>
 
-## What You'll Find Here
+<p class="home-more">
+  <a href="/clients-cases/">View all cases <IconArrowRight class="home-post-arrow" /></a>
+</p>
 
-<div class="home-grid">
-  <div class="home-card">
-    <span class="home-card-icon"><IconPuzzle /></span>
-    <h3 class="home-card-title">Problem-Solving Tutorials</h3>
-    <p class="home-card-text">Real bugs, real fixes. Step-by-step walkthroughs of N+1 queries, race conditions, and memory leaks — with the code that solved them.</p>
-  </div>
-  <div class="home-card">
-    <span class="home-card-icon"><IconLayers /></span>
-    <h3 class="home-card-title">Production-Ready Patterns</h3>
-    <p class="home-card-text">Architecture and design patterns battle-tested in high-traffic systems: caching strategies, batch processing, and service decomposition.</p>
-  </div>
-  <div class="home-card">
-    <span class="home-card-icon"><IconSettings /></span>
-    <h3 class="home-card-title">DevOps Best Practices</h3>
-    <p class="home-card-text">Kubernetes probes, Docker builds, CI/CD pipelines, and infrastructure automation that actually survive production.</p>
-  </div>
-  <div class="home-card">
-    <span class="home-card-icon"><IconCode /></span>
-    <h3 class="home-card-title">Frontend & Backend</h3>
-    <p class="home-card-text">Full-stack coverage — database optimization and API design on one end, responsive UI and WebGL rendering on the other.</p>
-  </div>
-</div>
+<p class="home-eyebrow">How we work</p>
 
-## Why This Blog?
+## How We Work
 
 <div class="home-points">
   <div class="home-point">
-    <span class="home-point-check"><IconCheck /></span>
-    <span class="home-point-body">
-      <span class="home-point-title">Production-Tested</span>
-      <span class="home-point-text">Every post starts from an actual issue I hit in production — not recycled theory.</span>
-    </span>
+    <span class="home-point-num">01</span>
+    <div class="home-point-body">
+      <span class="home-point-title">Scope and price first</span>
+      <span class="home-point-text">You get fixed deliverables and a fixed price before any work starts — no hourly guessing games.</span>
+    </div>
   </div>
   <div class="home-point">
-    <span class="home-point-check"><IconCheck /></span>
-    <span class="home-point-body">
-      <span class="home-point-title">No Fluff</span>
-      <span class="home-point-text">The why and the how, without wading through filler or academic detours.</span>
-    </span>
+    <span class="home-point-num">02</span>
+    <div class="home-point-body">
+      <span class="home-point-title">Short, frequent updates</span>
+      <span class="home-point-text">Written progress notes and working demos as we build, so there are no surprises at the end.</span>
+    </div>
   </div>
   <div class="home-point">
-    <span class="home-point-check"><IconCheck /></span>
-    <span class="home-point-body">
-      <span class="home-point-title">Copy-Paste Ready</span>
-      <span class="home-point-text">Complete, runnable code examples you can drop into your project in minutes.</span>
-    </span>
+    <span class="home-point-num">03</span>
+    <div class="home-point-body">
+      <span class="home-point-title">You own everything</span>
+      <span class="home-point-text">Code, accounts, infrastructure, and documentation are handed over and fully yours.</span>
+    </div>
   </div>
   <div class="home-point">
-    <span class="home-point-check"><IconCheck /></span>
-    <span class="home-point-body">
-      <span class="home-point-title">Always Current</span>
-      <span class="home-point-text">Regular updates from cloud-native tooling, AI-assisted development, and modern frameworks.</span>
-    </span>
+    <span class="home-point-num">04</span>
+    <div class="home-point-body">
+      <span class="home-point-title">Support after launch</span>
+      <span class="home-point-text">Every project includes a bug-fix and small-tweak window once it's live.</span>
+    </div>
   </div>
 </div>
 
+<p class="home-eyebrow">Global delivery</p>
+
+## Where We Work
+
+<p class="home-map-lead">Based in UTC+8 and delivering remotely — written updates in clear English, working demos as we build, and async-friendly workflows for teams across Asia-Pacific, Europe and the Americas.</p>
+
+<WorldMap />
+
 <div class="home-cta">
-  <a class="home-cta-btn brand" href="/posts/">Browse All Articles</a>
-  <a class="home-cta-btn" href="/about/">About Me</a>
+  <h2>Have a project in mind?</h2>
+  <p>Tell us what you're trying to achieve and we'll suggest the smallest version that creates real value — with a fixed scope and a fixed price.</p>
+  <div class="home-cta-actions">
+    <a class="home-cta-btn brand" href="/contact/">Get in touch</a>
+    <a class="home-cta-btn" href="/services/">See services &amp; pricing</a>
+  </div>
 </div>

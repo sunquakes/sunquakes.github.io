@@ -42,6 +42,105 @@
 
 ---
 
+## Frontmatter Description
+
+**Every content page MUST keep its frontmatter `description` in sync with the page content.**
+
+- The `description` is rendered into `<meta name="description">`, so it drives search results and link previews
+- Whenever the visible content of a page changes (sections added, removed, or rewritten), update the `description` in the same change
+- Describe what the page actually offers now — do not keep outdated wording about anything that was removed
+- Keep it to a single sentence of roughly 120–160 characters, written in the same language as the page
+- Base it only on content that exists on the page — never invent services, prices, or claims
+
+**Example:**
+- ❌ `description: Web and mobile app development.` (generic, and stale once new services were added)
+- ✅ `description: "Fixed-price custom software: web apps, backend APIs, AI automation, 3D and GIS development — scoped and priced in writing before any work starts."`
+
+**Note:** Quote the value when it contains `: `, `#`, or other YAML-special characters.
+
+---
+
+## Service Consistency
+
+**`services/index.md` is the single source of truth for what is offered.**
+
+- Every page — Home, Projects, Contact, nav, and meta descriptions — must describe only services that are actually listed on the Services page. Never invent a service, price, or capability
+- When a service is added, renamed, or removed on the Services page, update every page that lists or summarises services in the same change
+- The Home feature cards MUST mirror the primary service categories on the Services page (the H3 sections under "Full Service List"), reusing the same naming and scope. Benefit-driven wording is fine, but the scope must trace back to a listed service
+- Supplementary items (cloud deployment, documentation, training) live under "Additional Implementation Services" and are not given their own Home card
+- Every other place that lists or offers a service — the Contact page's "What do you need?" dropdown and any select/form field, CTA copy, nav labels, and meta descriptions — MUST enumerate the same primary service categories, in the same order, with the same names or a clear paraphrase. Add a single catch-all option at the end (e.g. "Something else") rather than inventing extra services
+- Treat form dropdowns as service lists, not free-form UI: when a service is added, renamed, or removed on the Services page, update the form options in the same change
+
+**Example:**
+- ❌ Home shows a "Backend & API Development" card, but the Services page only offers backend APIs as part of "Custom Business Software Solutions"
+- ❌ The Contact "What do you need?" dropdown offers "Game development" and "Server maintenance", which are not listed on the Services page
+- ✅ Home and Services both present the same categories: Custom Business Software, AI Business Automation, 3D Interactive Experiences, and GIS & Map Solutions
+- ✅ The Contact dropdown offers one option per Services page section — Custom business software, AI business automation, 3D interactive experiences, GIS &amp; map solutions, and Deployment/documentation/training — plus "Something else"
+
+---
+
+## Clients & Logo Consistency
+
+**`clients-cases/index.md` is the single source of truth for client claims.**
+
+- List only companies the owner has actually delivered work for. Never invent a client, and never add a company's logo to imply a relationship that does not exist
+- Display **official brand marks only** — download them from the client's own website or brand/CDN and store them under `public/assets/clients/`. Never redraw, recolor, crop, or AI-generate a third-party logo
+- Reference a logo as `/assets/clients/<file>` with descriptive `alt` text (e.g. `alt="Haier logo"`)
+- Use the exact public brand name. Add a country or entity qualifier only when it identifies the real contracting entity (e.g. `Haier Thailand`)
+- Never publish a client's commercial details — contract size, rates, timelines, or internal metrics — unless the client has agreed to it
+- Never name a client who is under NDA. Describe that work by capability and sector only — no name, no logo, no detail specific enough to identify the client — and say the details are available on a call. Anonymised claims must still trace to real work
+- Case studies are titled by capability and stay **unattributed** until the owner confirms which engagement belongs to which client
+
+**Markup:** render clients in the `pf-grid pf-grid-3` grid — three per row, collapsing to two below 960px and one below 640px:
+
+```html
+<div class="pf-grid pf-grid-3">
+  <div class="pf-card">
+    <div class="pf-client-logo">
+      <img src="/assets/clients/haier.png" alt="Haier logo" loading="lazy" />
+    </div>
+    <h3>Haier Thailand</h3>
+  </div>
+</div>
+```
+
+To signal that more clients exist without naming them, use the `pf-nda` block — a bordered note with a `.pf-nda` heading, a short explanation and a `pf-btn` link to the contact page. List the withheld engagements as capability plus sector, never as a named or identifiable client.
+
+- `.pf-client-logo` keeps a white tile behind the mark so dark or transparent logos stay legible in both light and dark themes. Do not remove it
+- When a client is added, renamed, or removed, update the `description` in `clients-cases/index.md` in the same change
+
+**Example:**
+- ❌ Adding "Acme Corp" with a logo pulled from a random search result, because the page looks sparse
+- ❌ Redrawing a client's wordmark as inline SVG to match the site palette
+- ❌ Writing "cut their export time by 60%" for a client that never approved that number
+- ✅ Adding a client only after the engagement is real, using the official mark downloaded from their own site, with the name matching their own branding
+
+---
+
+## Case Study Pages
+
+**Case detail pages are flat files, not folders.**
+
+- Each case lives at `clients-cases/<case-name>.md` — never `clients-cases/<case-name>/index.md`
+- Each card's `data-case-study` must be `/clients-cases/<case-name>` — no trailing slash, no `.html`; the content loader strips `.html` so the popup's exact-match lookup succeeds
+- The listing page `clients-cases/index.md` must stay out of the popup payload
+
+**A case has exactly one cover image, shared by every surface.**
+
+- The home page card, the Clients & Cases grid card and the detail page must all point at the same local file under `public/assets/clients-cases/`
+- Never reference an external image URL (the generation API, a CDN, a stock site) from a page — download or author the asset and commit it to the repo
+- Use the same `alt` text on all three surfaces, describing what the image actually shows rather than the service offered
+- When a cover is replaced, swap the file in place or update all three references in the same change; remove the old file so unused assets don't linger
+- Prefer a vector `.svg` cover when the image is an illustrated mockup — it stays sharp at card and detail-page sizes
+
+**If a case is a video, the detail page contains only the video.**
+
+- A video case page shows exactly: the page title, the `<video>` block and the back link — nothing else
+- No intro paragraph and no text sections (challenge, result, write-up) on a video case page
+- Image-based case pages follow the normal structure: intro, media, The challenge, Result
+
+---
+
 ## Article Structure Standards
 
 ### 1. Title Format
@@ -378,6 +477,41 @@ Before [action]:
 ## Common Pitfalls to Avoid
 
 ### ❌ Pitfall 1: [Name]
+
+```java
+// Bad
+```
+
+```java
+// Good
+```
+
+## Summary
+
+1. **[Point 1]** - [Explanation]
+2. **[Point 2]** - [Explanation]
+
+**Remember:** [Takeaway]
+```
+
+---
+
+## Quality Checklist
+
+Before publishing, verify:
+
+- [ ] Title is action-oriented and specific
+- [ ] Filename follows naming conventions (lowercase, hyphens, descriptive)
+- [ ] Introduction clearly states the problem
+- [ ] All code examples have language identifiers
+- [ ] Good practices marked with ✅
+- [ ] Bad practices marked with ❌
+- [ ] Performance comparison table included
+- [ ] Summary has numbered key points
+- [ ] "Remember" statement is memorable
+- [ ] No emoji overuse (only ✅ ❌ ⚠️)
+- [ ] All code is syntactically correct
+- [ ] Links to related articles (if any)
 
 ```java
 // Bad
