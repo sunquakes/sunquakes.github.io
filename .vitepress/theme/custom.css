@@ -1204,16 +1204,17 @@ html.dark .x-hero-bg::before {
 
 /* ---------------------------------------------------------------------------
    Shared portfolio components (Services / Clients & Cases / Contact pages)
-   Styled to match the home page: centered headings, the same card treatment
-   (soft tint + sheen + hover lift) and the same button language. Scoped to
-   doc pages without an aside so blog posts keep the reading layout.
+   Styled to match the home page: left-aligned headings and intro copy, the
+   same card treatment (soft tint + sheen + hover lift) and the same button
+   language. Scoped to doc pages without an aside so blog posts keep the
+   reading layout.
    The scope is wrapped in :where() to keep its specificity low, so the
    existing pf-* component overrides below still win where they apply.
    --------------------------------------------------------------------------- */
 
 :where(#app .VPDoc:not(.has-aside)) .vp-doc h1 {
   margin: 0 0 24px;
-  text-align: center;
+  text-align: left;
   font-size: clamp(30px, 3.4vw, 44px);
   line-height: 1.15;
   font-weight: 800;
@@ -1222,8 +1223,8 @@ html.dark .x-hero-bg::before {
 
 :where(#app .VPDoc:not(.has-aside)) .vp-doc h1 + p {
   max-width: 720px;
-  margin: 0 auto 8px;
-  text-align: center;
+  margin: 0 0 8px;
+  text-align: left;
   font-size: 16px;
   line-height: 1.7;
   color: var(--vp-c-text-2);
@@ -1233,7 +1234,7 @@ html.dark .x-hero-bg::before {
   margin: 64px 0 0;
   padding: 0;
   border: 0;
-  text-align: center;
+  text-align: left;
   font-size: clamp(26px, 2.6vw, 34px);
   line-height: 1.2;
   font-weight: 700;
@@ -1912,7 +1913,7 @@ html.dark .x-hero-bg::before {
 .vp-doc .pf-form {
   display: grid;
   gap: 16px;
-  margin: 24px auto;
+  margin: 24px 0;
   max-width: 640px;
 }
 
@@ -2014,6 +2015,11 @@ html.dark .x-hero-bg::before {
    The rules are prefixed with #app so they outrank the theme's scoped styles
    (which carry a higher-specificity [data-v-*] attribute selector).
    --------------------------------------------------------------------------- */
+
+/* The doc column stays centred — the theme's behaviour — so every page keeps
+   balanced left/right margins; only the text inside is left-aligned. index.md
+   renders through its own .x-home layout and never produces a .VPDoc, so it is
+   untouched. */
 
 @media (min-width: 960px) {
   #app .VPDoc:not(.has-sidebar) .container {
