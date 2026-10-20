@@ -19,16 +19,6 @@ A CRM is only as good as the customer data salespeople actually enter. This syst
 - **Data that never gets entered.** Sales staff keep customer knowledge in their heads or private notebooks unless registering a customer actually pays off for them.
 - **Sales and finance drift apart.** Orders, payments, receivables and refunds live in different places, so nobody can see a customer's real balance without asking the finance team.
 
-## What we built
-
-<!-- TODO(owner): confirm the mechanisms above and add 1-2 concrete facts (rep count, customers claimed, or a before/after number) -->
-
-- **Personal customer pools** — every rep manages their own customers; a claimed customer is locked to that rep for a configurable period and automatically returns to the open pool when the claim expires.
-- **Competitive claiming, first-come-first-served** — when two reps go after the same customer, the earlier claim wins and the loser is redirected to other opportunities, so ownership is settled by record rather than argument.
-- **Entry incentives** — reps earn rewards for registering new customers and completing their details (contacts, needs, follow-up notes), which keeps the database growing instead of living in notebooks.
-- **Financial management** — orders, payments, receipts, refunds and receivables tracked per customer, with an outstanding-balance ledger on every customer record, so sales sees the money side without opening a second system.
-- **Role-based views** — reps see their own book, managers see the whole team's pools and claims, finance sees the ledgers — and one person can hold different roles.
-
 ## Result
 
 - Customer ownership is settled by the claim record — reps compete for open customers instead of fighting over whose customer it is.
