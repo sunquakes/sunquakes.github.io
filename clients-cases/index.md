@@ -2,9 +2,12 @@
 title: Clients & Cases
 description: "Clients we've built software for — Haier Thailand and CHINT publicly, plus more under NDA — with case studies on order analytics, 3D, SaaS, AI support, GIS and online collaboration."
 aside: false
+pageClass: x-case-page
 ---
 
 # Clients & Cases
+
+<p class="x-page-lead">Software we've designed, built and shipped — public client engagements, plus case studies on the systems behind them.</p>
 
 ## Selected Clients
 

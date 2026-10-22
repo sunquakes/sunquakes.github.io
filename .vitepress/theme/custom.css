@@ -57,6 +57,9 @@
   --x-accent-2: #7c3aed;
   --x-accent-3: #db2777;
   --x-accent-soft: rgba(99, 102, 241, 0.12);
+  --x-map-dot-a: rgba(71, 85, 105, 0.4);
+  --x-map-dot-b: rgba(79, 70, 229, 0.32);
+  --x-map-dot-c: rgba(219, 39, 119, 0.28);
   --x-ring: rgba(99, 102, 241, 0.28);
   --x-btn-from: #4f46e5;
   --x-btn-to: #7c3aed;
@@ -659,19 +662,17 @@
 }
 
 .home-map {
-  margin: 40px 0 0;
+  margin: 44px 0 0;
 }
 
+/* The map sits directly on the page background — no card frame or fill. */
 .x-map {
   position: relative;
 }
 
-.x-map::before {
-  content: '';
-  position: absolute;
-  inset: -4% -2%;
-  background: radial-gradient(ellipse 46% 52% at 80% 36%, var(--x-accent-soft), transparent 70%);
-  pointer-events: none;
+/* Inner canvas keeps the chip percentage coordinates aligned to the SVG. */
+.x-map-canvas {
+  position: relative;
 }
 
 .x-map-svg {
@@ -679,40 +680,59 @@
   display: block;
   width: 100%;
   height: auto;
+  animation: x-map-in calc(0.9s * var(--x-tempo)) var(--x-ease-soft) both;
 }
 
-.x-map-dots {
-  fill: rgba(71, 85, 105, 0.4);
+@keyframes x-map-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-html.dark .x-map-dots {
-  fill: rgba(165, 180, 252, 0.3);
-}
+/* Dot field tint comes from the SVG gradient (xMapDots). */
 
 .x-map-arc {
   fill: none;
   stroke-linecap: round;
 }
 
-.x-map-arc-link {
+/* Dotted hairlines that are always visible, flowing slowly away from the hub. */
+.x-map-arc-base {
   stroke: var(--x-accent);
-  stroke-width: 1.6;
-  opacity: 0.75;
-  stroke-dasharray: 5 7;
-  animation: x-map-flow calc(2.8s * var(--x-tempo)) linear infinite;
+  stroke-width: 1.4;
+  stroke-dasharray: 0.1 5;
+  opacity: 0.55;
+  animation: x-map-flow calc(1.6s * var(--x-tempo)) linear infinite;
 }
 
-/* Softer mesh links between zones. */
-.x-map-arc-link.is-cross {
+.x-map-arc-base.is-cross {
   stroke: var(--x-accent-2);
-  stroke-width: 1.3;
-  opacity: 0.45;
+  stroke-dasharray: 0.1 4.5;
+  opacity: 0.6;
+  animation-name: x-map-flow-cross;
 }
 
 @keyframes x-map-flow {
   to {
-    stroke-dashoffset: -48;
+    stroke-dashoffset: -10.2;
   }
+}
+
+/* Cross links use a 4.6 unit dash cycle, so their loop offset differs. */
+@keyframes x-map-flow-cross {
+  to {
+    stroke-dashoffset: -9.2;
+  }
+}
+
+html.dark .x-map-arc-base:not(.is-dim):not(.is-active) {
+  opacity: 0.6;
 }
 
 .x-map-core {
@@ -725,92 +745,165 @@ html.dark .x-map-dots {
   fill: var(--x-accent-2);
 }
 
+.x-map-core-dot {
+  fill: #fff;
+}
+
+/* Static pin ring around each node — reads as a marker, not a brand blob. */
+.x-map-ring {
+  fill: none;
+  stroke: var(--x-accent-2);
+  stroke-width: 1;
+  opacity: 0.45;
+}
+
+.x-map-ring.is-hub {
+  stroke: var(--x-accent);
+  opacity: 0.55;
+}
+
+/* Clickable plot markers: invisible hit area + pointer/focus affordances. */
+.x-map-node {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.x-map-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.x-map-node:focus,
+.x-map-node:focus-visible {
+  outline: none;
+}
+
+.x-map-node:focus-visible .x-map-ring {
+  opacity: 1;
+  stroke-width: 1.8;
+}
+
+/* Marker focus: only the clicked marker's routes glow, the rest stay visible. */
+.x-map-arc-base,
+.x-map-node {
+  transition:
+    opacity calc(0.35s * var(--x-tempo)) var(--x-ease-out),
+    stroke-width calc(0.35s * var(--x-tempo)) var(--x-ease-out),
+    filter calc(0.35s * var(--x-tempo)) var(--x-ease-out);
+}
+
+.x-map-arc-base.is-active {
+  opacity: 0.85;
+  stroke-width: 1.9;
+  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--x-accent) 38%, transparent));
+}
+
+.x-map-arc-base.is-cross.is-active {
+  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--x-accent-2) 38%, transparent));
+}
+
+/* Unrelated routes fade but never disappear — the mesh stays readable. */
+.x-map-arc-base.is-dim {
+  opacity: 0.3;
+}
+
+.x-map-node.is-active .x-map-ring {
+  opacity: 0.9;
+  stroke-width: 1.3;
+  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--x-accent-2) 42%, transparent));
+}
+
+.x-map-node.is-active .x-map-core {
+  fill: var(--x-accent-3);
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--x-accent-3) 45%, transparent));
+}
+
+/* Wave effect: each marker emits a slow expanding ring. */
 .x-map-pulse {
   fill: none;
   stroke: var(--x-accent);
-  stroke-width: 1.1;
+  stroke-width: 1.4;
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: x-map-ping calc(3s * var(--x-tempo)) cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: x-map-ping calc(2.8s * var(--x-tempo)) cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 .x-map-node.is-zone .x-map-pulse {
   stroke: var(--x-accent-2);
 }
 
+.x-map-node.is-active .x-map-pulse {
+  stroke: var(--x-accent-3);
+  stroke-width: 1.3;
+}
+
 .x-map-pulse.is-late {
-  animation-delay: calc(1.5s * var(--x-tempo));
+  animation-delay: calc(1.4s * var(--x-tempo));
 }
 
 @keyframes x-map-ping {
   0% {
-    transform: scale(0.3);
-    opacity: 0.9;
+    transform: scale(0.4);
+    opacity: 0.7;
   }
 
   70%,
   100% {
-    transform: scale(1.7);
+    transform: scale(2.8);
     opacity: 0;
   }
 }
 
-.x-map-chip {
-  position: absolute;
-  left: var(--chip-x);
-  top: var(--chip-y);
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 11px;
-  border: 1px solid var(--x-card-border);
-  border-radius: 999px;
-  background-color: var(--vp-c-bg-soft);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-  white-space: nowrap;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
-}
-
-.x-map-chip i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--x-accent);
-}
-
-.x-map-chip i.is-zone {
-  background: var(--x-accent-2);
-}
-
-.x-map-chip--left {
-  transform: translate(calc(-100% - 14px), -50%);
-}
-
-.x-map-chip--up {
-  transform: translate(-50%, calc(-100% - 16px));
-}
-
-.x-map-chip--down {
-  transform: translate(-50%, 16px);
-}
-
+/* Legend controls below the map — text only, no plate behind them. */
 .x-map-legend {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px 28px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .x-map-key {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: var(--vp-c-text-2);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.x-map-key:hover,
+.x-map-key.is-active {
+  color: var(--x-accent);
+}
+
+/* Selected legend entry: a soft accent glow instead of a boxed outline. */
+.x-map-key.is-active {
+  text-shadow: 0 0 8px color-mix(in srgb, var(--x-accent) 28%, transparent);
+}
+
+/* No focus rectangle — keyboard focus reads as an accent glow, not a box. */
+.x-map-key:focus {
+  outline: none;
+}
+
+.x-map-key:focus-visible {
+  outline: none;
+  color: var(--x-accent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--x-accent) 45%, transparent);
 }
 
 .x-map-key i {
@@ -828,17 +921,17 @@ html.dark .x-map-dots {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .x-map-arc,
-  .x-map-pulse {
+  .x-map-svg {
+    animation: none;
+  }
+
+  .x-map-arc-base {
     animation: none;
   }
 
   .x-map-pulse {
+    animation: none;
     opacity: 0;
-  }
-
-  .x-map-arc-link {
-    stroke-dasharray: none;
   }
 }
 
@@ -934,6 +1027,9 @@ html.dark {
   --x-accent-2: #c4b5fd;
   --x-accent-3: #f9a8d4;
   --x-accent-soft: rgba(129, 140, 248, 0.14);
+  --x-map-dot-a: rgba(199, 210, 254, 0.3);
+  --x-map-dot-b: rgba(165, 180, 252, 0.36);
+  --x-map-dot-c: rgba(249, 168, 212, 0.3);
   --x-ring: rgba(165, 180, 252, 0.32);
   --x-btn-from: #6366f1;
   --x-btn-to: #8b5cf6;
@@ -1035,11 +1131,6 @@ html.dark .x-hero-bg::before {
 
   .x-body p.home-eyebrow {
     margin-top: 64px;
-  }
-
-  /* Chips would overflow a narrow map; the legend below carries the info. */
-  .x-map-chip {
-    display: none;
   }
 
   .home-map {
@@ -1625,6 +1716,139 @@ html.dark .x-hero-bg::before {
 
 .vp-doc .pf-nda p:last-child {
   margin-bottom: 0;
+}
+
+/* Clients & Cases page — shares the home page rhythm and card language ------ */
+
+.x-case-page .VPDoc .content-container,
+.x-case-page .VPDoc .content {
+  max-width: 1160px;
+}
+
+.x-case-page .vp-doc h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.x-case-page .x-page-lead {
+  max-width: 620px;
+  margin: 18px 0 0;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+}
+
+/* Section headings match the home sections: tight, no rules. */
+.x-case-page .vp-doc h2 {
+  margin: 72px 0 0;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* The NDA callout keeps its own compact heading inside the card. */
+.x-case-page .vp-doc .pf-nda h2 {
+  margin: 0 0 8px;
+  text-align: left;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.x-case-page .vp-doc .pf-grid {
+  gap: 18px;
+  margin: 28px 0 0;
+}
+
+.x-case-page .vp-doc .pf-cases {
+  gap: 18px;
+  margin: 28px 0 0;
+}
+
+/* Case cards echo the home project cards: full-bleed media, compact text. */
+.x-case-page .vp-doc .pf-case {
+  padding: 0;
+}
+
+.x-case-page .vp-doc .pf-case-media {
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--x-card-border);
+  background-color: var(--vp-c-bg-alt);
+}
+
+.x-case-page .vp-doc .pf-case-media img,
+.x-case-page .vp-doc .pf-case-media video {
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0;
+}
+
+.x-case-page .vp-doc .pf-case h3 {
+  margin: 0;
+  padding: 18px 20px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.x-case-page .vp-doc .pf-case:hover .pf-case-media img,
+.x-case-page .vp-doc .pf-case:hover .pf-case-media video {
+  transform: scale(1.04);
+}
+
+.x-case-page .vp-doc .pf-case-media img,
+.x-case-page .vp-doc .pf-case-media video {
+  transition: transform calc(0.6s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+/* Client cards share the case card shell: full-bleed media, compact title. */
+.x-case-page .vp-doc .pf-card {
+  padding: 0;
+}
+
+.x-case-page .vp-doc .pf-client-logo {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  padding: 28px;
+  border: 0;
+  border-bottom: 1px solid var(--x-card-border);
+  border-radius: 0;
+}
+
+.x-case-page .vp-doc .pf-card h3 {
+  margin: 0;
+  padding: 18px 20px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.x-case-page .vp-doc .pf-client-logo img {
+  transition: transform calc(0.6s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+.x-case-page .vp-doc .pf-card:hover .pf-client-logo img {
+  transform: scale(1.04);
+}
+
+.x-case-page .vp-doc .pf-nda {
+  margin-top: 28px;
 }
 
 /* Pricing plans */
