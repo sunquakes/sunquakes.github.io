@@ -4,10 +4,9 @@ import { WORLD_DOTS_PATH } from './worldDots'
 
 // Equirectangular projection into the 1000x500 viewBox:
 //   x = (lon + 180) / 360 * 1000, y = (90 - lat) / 180 * 500
-// Only the hub is anchored to a public fact (the studio is based in UTC+8,
-// per the contact page). The zone markers are decorative anchors for the
-// remote delivery regions — they are not client locations.
-const hub = { x: 794.4, y: 166.7 } // UTC+8 base (East Asia)
+// The hub sits at the studio base in Suzhou, China (31.3°N, 120.6°E).
+// The zone markers are decorative anchors for the remote delivery regions.
+const hub = { x: 835.1, y: 163.1 }
 
 type RegionId = 'studio' | 'europe' | 'americas' | 'asia-pacific'
 
@@ -28,6 +27,8 @@ const zones = [
   { id: 'melbourne', x: 902.7, y: 355, region: 'asia-pacific' },
   { id: 'singapore', x: 788.4, y: 246.3, region: 'asia-pacific' },
   { id: 'dubai', x: 653.5, y: 180, region: 'asia-pacific' },
+  // Client delivery in Thailand.
+  { id: 'bangkok', x: 779.2, y: 211.8, region: 'asia-pacific' },
 ] as const
 
 // Decorative delivery arcs (quadratic curves) radiating from the hub.
@@ -42,6 +43,7 @@ const routes = [
   { id: 'sydney', x: 920, y: 344.1, cx: 880, cy: 250, region: 'asia-pacific' }, // → Sydney
   { id: 'singapore', x: 788.4, y: 246.3, cx: 800, cy: 210, region: 'asia-pacific' }, // → Singapore
   { id: 'dubai', x: 653.5, y: 180, cx: 720, cy: 150, region: 'asia-pacific' }, // → Dubai
+  { id: 'bangkok', x: 779.2, y: 211.8, cx: 825, cy: 200, region: 'asia-pacific' }, // → Bangkok
 ]
 
 // One selection at a time: a single marker, or a whole region from the legend.
@@ -129,6 +131,27 @@ const markerLabel = (id: string) =>
           </g>
 
           <g
+            class="x-map-node"
+            :class="{ 'is-active': activePoint === 'studio' }"
+            :transform="`translate(${hub.x} ${hub.y})`"
+            role="button"
+            tabindex="0"
+            aria-label="Studio — Suzhou, China"
+            :aria-pressed="activePoint === 'studio'"
+            @click="selectPoint('studio')"
+            @keydown.enter.prevent="selectPoint('studio')"
+            @keydown.space.prevent="selectPoint('studio')"
+          >
+            <circle class="x-map-hit" r="20" />
+            <circle class="x-map-halo is-hub" r="30" fill="url(#xMapHubGlow)" />
+            <circle class="x-map-ring is-hub" r="13" />
+            <circle class="x-map-pulse" r="10" />
+            <circle class="x-map-pulse is-late" r="10" />
+            <circle class="x-map-core" r="4.4" />
+            <circle class="x-map-core-dot" r="1.5" />
+          </g>
+
+          <g
             v-for="(zone, i) in zones"
             :key="zone.id"
             class="x-map-node is-zone"
@@ -149,26 +172,6 @@ const markerLabel = (id: string) =>
             <circle class="x-map-core" r="2.6" />
           </g>
 
-          <g
-            class="x-map-node"
-            :class="{ 'is-active': activePoint === 'studio' }"
-            :transform="`translate(${hub.x} ${hub.y})`"
-            role="button"
-            tabindex="0"
-            aria-label="Studio — highlight its routes"
-            :aria-pressed="activePoint === 'studio'"
-            @click="selectPoint('studio')"
-            @keydown.enter.prevent="selectPoint('studio')"
-            @keydown.space.prevent="selectPoint('studio')"
-          >
-            <circle class="x-map-hit" r="20" />
-            <circle class="x-map-halo is-hub" r="30" fill="url(#xMapHubGlow)" />
-            <circle class="x-map-ring is-hub" r="13" />
-            <circle class="x-map-pulse" r="10" />
-            <circle class="x-map-pulse is-late" r="10" />
-            <circle class="x-map-core" r="4.4" />
-            <circle class="x-map-core-dot" r="1.5" />
-          </g>
         </svg>
       </div>
     </div>
