@@ -1,4 +1,4 @@
----
+﻿---
 title: Clients & Cases
 description: "Clients we've built software for — Haier Thailand and CHINT publicly, plus more under NDA — with case studies on order analytics, 3D, SaaS, AI support, GIS and online collaboration."
 aside: false
@@ -36,7 +36,7 @@ pageClass: x-case-page
 <div class="pf-cases">
   <div class="pf-case">
     <div class="pf-case-media">
-      <img src="/assets/backend/database/db-batch-query-solution.jpg" alt="Order fields queried across different tables and filtered to 20 rows per page fast" loading="lazy" />
+      <img src="/assets/clients-cases/ten-million-order-realtime-display.jpg" alt="Batched query flow between a ClickHouse wide table and MySQL detail tables" loading="lazy" />
     </div>
     <h3>Ten-Million-Order Realtime Display</h3>
     <button type="button" class="pf-case-open" data-case-study="/clients-cases/ten-million-order-realtime-display" aria-label="View case study: Ten-Million-Order Realtime Display"></button>

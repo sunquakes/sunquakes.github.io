@@ -161,6 +161,43 @@ To signal that more clients exist without naming them, use the `pf-nda` block �
 
 ---
 
+## Post Illustrations
+
+**Every post gets its own image folder mirroring its article path: `public/assets/posts/<category path...>/<post-slug>/`.**
+
+- The image folder must mirror the article's full folder chain under `posts/`, then add the post slug: every category layer the article sits in becomes a folder layer here too
+  - `posts/ai/avoid-database-queries-in-loops.md` → `public/assets/posts/ai/avoid-database-queries-in-loops/01-shared-query-layer.svg`
+  - `posts/ai/agents/<post-slug>.md` → `public/assets/posts/ai/agents/<post-slug>/01-....svg`
+  - `posts/backend/database/indexing/<post-slug>.md` → `public/assets/posts/backend/database/indexing/<post-slug>/01-....svg`
+- Never flatten the chain: no images sitting directly in `public/assets/posts/`, none in a category folder without the post slug (e.g. `public/assets/ai/`), and no collapsed multi-level categories (e.g. `ai-agents/`)
+- Always write the **whole path, file included**, so the file's real location is unambiguous
+- Reference the same whole path from the article, minus `public`, as an absolute public URL: `public/assets/posts/<category path...>/<post-slug>/<file>` → `/assets/posts/<category path...>/<post-slug>/<file>`. A relative path breaks once the file leaves the article folder
+- Name each file after what it shows, with a zero-padded prefix that matches its order in the article (e.g. `01-idea-to-working-product.svg`)
+- Place each illustration directly under the heading it belongs to — one image per section, not stacked in a gallery at the end
+- Write `alt` text in the same language as the article and describe what the picture actually shows, not the point you wish it made
+- Prefer `.svg` for flat vector artwork so it stays sharp at any width; screenshots and screen recordings stay `.png` / `.gif`
+- Never reference an external image URL from an article — download or author the asset, commit it, then link the local file
+- Delete the asset (and its folder once empty) in the same change that removes its last reference, so unused files don't linger
+
+**Examples:**
+
+- ❌ `public/assets/posts/03-prompt-to-app.svg` (loose file, not grouped per post)
+- ❌ `public/assets/ai/prompt-to-app.svg` (category folder, no post slug)
+- ❌ `public/assets/posts/ai-agents/<post-slug>/03-prompt-to-app.svg` (collapsed a two-level category into one folder)
+- ❌ `posts/ai/illustrations/03-prompt-to-app.svg` referenced as `illustrations/03-prompt-to-app.svg`
+- ✅ `public/assets/posts/ai/become-a-full-stack-developer-without-writing-code/03-prompt-to-app.svg` referenced as `/assets/posts/ai/become-a-full-stack-developer-without-writing-code/03-prompt-to-app.svg`
+- ✅ `posts/backend/database/indexing/<post-slug>.md` → `public/assets/posts/backend/database/indexing/<post-slug>/01-....svg` referenced as `/assets/posts/backend/database/indexing/<post-slug>/01-....svg`
+
+```md
+<!-- posts/ai/<post-slug>.md -->
+![A prompt bubble turning into a running app on a phone](/assets/posts/ai/<post-slug>/03-prompt-to-app.svg)
+
+<!-- posts/ai/agents/<post-slug>.md -->
+![A prompt bubble turning into a running app on a phone](/assets/posts/ai/agents/<post-slug>/03-prompt-to-app.svg)
+```
+
+---
+
 ## Article Structure Standards
 
 ### 1. Title Format

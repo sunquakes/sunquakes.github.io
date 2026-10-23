@@ -1,6 +1,6 @@
-# Build Web 3D with React Components
+﻿# Build Web 3D with React Components
 
-![React Three Lite](/assets/frontend/3d/00-logo.png)
+![React Three Lite](/assets/posts/frontend/3d/build-web-3d-with-react-components/00-logo.png)
 
 You know the request.
 
@@ -30,7 +30,7 @@ function App() {
 
 Mounting it automatically wires up the renderer, camera, lights, and OrbitControls. The Perseverance rover below is the real effect of auto-rotating a GLTF model with `ModelRotator`:
 
-![Perseverance rover model auto-rotating](/assets/frontend/3d/01-model.gif)
+![Perseverance rover model auto-rotating](/assets/posts/frontend/3d/build-web-3d-with-react-components/01-model.gif)
 
 The model loaders also ship with IndexedDB caching — repeat visits read straight from local storage, and GLTF / FBX / OBJ plus Draco compression are all supported.
 
@@ -49,23 +49,23 @@ One prop to switch. Every demo in the docs ships with WebGPU / WebGL tabs — **
 
 For digital twins, product showcases, and campaign pages, effects are often the “texture dividing line.” R3L ships a set verified on both renderers:
 
-![Bloom post-processing glow](/assets/frontend/3d/02-bloom.gif)
+![Bloom post-processing glow](/assets/posts/frontend/3d/build-web-3d-with-react-components/02-bloom.gif)
 
-![Model sweep-light effect](/assets/frontend/3d/04-sweep.gif)
+![Model sweep-light effect](/assets/posts/frontend/3d/build-web-3d-with-react-components/04-sweep.gif)
 
 Environment and weather are just as ready out of the box — a six-face skybox adds instant depth, and shader-powered particle rain and snow bring wind distortion and drifting motion:
 
-![Six-face skybox environment](/assets/frontend/3d/10-skybox.gif)
+![Six-face skybox environment](/assets/posts/frontend/3d/build-web-3d-with-react-components/10-skybox.gif)
 
-![Particle rain effect](/assets/frontend/3d/03-rain.gif)
+![Particle rain effect](/assets/posts/frontend/3d/build-web-3d-with-react-components/03-rain.gif)
 
-![Particle snow effect](/assets/frontend/3d/11-snow.gif)
+![Particle snow effect](/assets/posts/frontend/3d/build-web-3d-with-react-components/11-snow.gif)
 
 And the data-visualization meshes come along too — ripple circles and flow lines, giving you that “breathing” feel without hand-writing shaders:
 
-![Ripple-circle data-visualization mesh](/assets/frontend/3d/08-wavecircle.gif)
+![Ripple-circle data-visualization mesh](/assets/posts/frontend/3d/build-web-3d-with-react-components/08-wavecircle.gif)
 
-![Flow-line data-visualization mesh](/assets/frontend/3d/09-flowline.gif)
+![Flow-line data-visualization mesh](/assets/posts/frontend/3d/build-web-3d-with-react-components/09-flowline.gif)
 
 ## The 0.6.0 headline: bringing 3D GIS maps into React
 
@@ -78,7 +78,7 @@ The most exciting part of this release is a complete, out-of-the-box set of **3D
 
 The tile layer **follows the camera** by default — the region where the frustum meets the ground is sliced automatically, loading and recycling in real time as you pan, zoom, and orbit. Images decode on a worker thread, redundant mipmaps are disabled, and new tiles cross-fade over their coarse parents in 300ms… performance and visual polish refined to the standard of a mature map engine.
 
-![3D city tile map with location markers](/assets/frontend/3d/05-tilelayer.gif)
+![3D city tile map with location markers](/assets/posts/frontend/3d/build-web-3d-with-react-components/05-tilelayer.gif)
 
 ## A 3D scene shouldn’t just be looked at — it should be clicked
 
@@ -87,9 +87,9 @@ The tile layer **follows the camera** by default — the region where the frustu
 - **Movable**: let scene elements be dragged
 - **Picking**: picking made easy, so click-to-select is effortless
 
-![3D annotation with leader line](/assets/frontend/3d/06-callout.gif)
+![3D annotation with leader line](/assets/posts/frontend/3d/build-web-3d-with-react-components/06-callout.gif)
 
-![3D popup hosting a React component](/assets/frontend/3d/07-popup.gif)
+![3D popup hosting a React component](/assets/posts/frontend/3d/build-web-3d-with-react-components/07-popup.gif)
 
 ## Get started in three steps
 

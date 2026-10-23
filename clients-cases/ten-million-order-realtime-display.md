@@ -1,4 +1,4 @@
----
+﻿---
 title: Ten-Million-Order Realtime Display
 description: "A ten-million-order realtime display — many fields shown and filtered across tables, 20 rows per page within 500ms, 1M records exported in under 4 minutes."
 aside: false
@@ -9,7 +9,7 @@ aside: false
 Past ten million orders, the fields the business needs are spread across different tables. Showing many of them in one view — and filtering by any of them — has to stay fast, or the view is useless.
 
 <div class="pf-media">
-  <img src="/assets/backend/database/db-batch-query-solution.jpg" alt="Order fields queried across different tables and filtered to 20 rows per page fast" loading="lazy" />
+  <img src="/assets/clients-cases/ten-million-order-realtime-display.jpg" alt="Batched query flow between a ClickHouse wide table and MySQL detail tables" loading="lazy" />
 </div>
 
 ## The challenge

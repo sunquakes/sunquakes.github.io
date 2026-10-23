@@ -9,7 +9,7 @@ There are many ways to create a desktop application, Winforms and WPF in windows
 ## Preview
 
 <p align="center">
-  <img src="https://ekits.sunquakes.com/images/electron-kits.gif" alt="preview">
+  <img src="/assets/posts/frontend/electron/quickly-create-a-desktop-app/electron-kits.gif" alt="preview">
 </p>
 
 login info: username: admin, password: admin

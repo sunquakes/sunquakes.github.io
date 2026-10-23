@@ -1,4 +1,4 @@
----
+﻿---
 layout: HomePage
 
 hero:
@@ -54,7 +54,7 @@ import WorldMap from './.vitepress/theme/WorldMap.vue'
 <div class="home-projects">
   <a class="home-project" href="/clients-cases/" data-case-study="/clients-cases/ten-million-order-realtime-display">
     <span class="home-project-media">
-      <img src="/assets/backend/database/db-batch-query-solution.jpg" alt="Batched query flow between a ClickHouse wide table and MySQL detail tables" loading="lazy" />
+      <img src="/assets/clients-cases/ten-million-order-realtime-display.jpg" alt="Batched query flow between a ClickHouse wide table and MySQL detail tables" loading="lazy" />
       <span class="home-project-tag">Backend · Data</span>
     </span>
     <span class="home-project-body">

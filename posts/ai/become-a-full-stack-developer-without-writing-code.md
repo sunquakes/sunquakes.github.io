@@ -1,4 +1,4 @@
-# Become a full-stack developer without writing code
+﻿# Become a full-stack developer without writing code
 
 Building software used to demand a lot before you ever wrote a line that a user
 could see.
@@ -44,7 +44,7 @@ Strictly speaking, it's two things working together: the `mars` command-line too
 plus a skill you hand to an AI agent. The CLI generates the project and installs
 the toolchains; the skill tells the agent how each step should be done.
 
-![Creating and running a multi-platform project with mars](/assets/ai/mars-cli-demo.gif)
+![Creating and running a multi-platform project with mars](/assets/posts/ai/become-a-full-stack-developer-without-writing-code/mars-cli-demo.gif)
 
 ```bash
 pnpm add -g @marsquakes/cli
@@ -182,7 +182,7 @@ cross-file grunt work plus the endless rebuilds go to it.
 
 That whole thing with Codex, start to finish:
 
-![Using the scaffolded project with Codex](/assets/ai/ai-codex-demo.gif)
+![Using the scaffolded project with Codex](/assets/posts/ai/become-a-full-stack-developer-without-writing-code/ai-codex-demo.gif)
 
 ## A concrete example: search
 
