@@ -47,6 +47,43 @@ import IconArrowRight from '~icons/lucide/arrow-right'
 import WorldMap from './.vitepress/theme/WorldMap.vue'
 </script>
 
+<p class="home-eyebrow">Working with us</p>
+
+## Commitments you can hold us to
+
+<div class="home-trust">
+  <div class="home-trust-item">
+    <span class="home-trust-check" aria-hidden="true">✓</span>
+    <span class="home-trust-body">
+      <span class="home-trust-title">Fixed price before work starts</span>
+      <span class="home-trust-text">Scope, deliverables and price are agreed in writing first — never an open-ended hourly bill.</span>
+    </span>
+  </div>
+  <div class="home-trust-item">
+    <span class="home-trust-check" aria-hidden="true">✓</span>
+    <span class="home-trust-body">
+      <span class="home-trust-title">No payment before a proposal</span>
+      <span class="home-trust-text">Nothing is charged until you approve a written proposal. A 50% deposit starts the work.</span>
+    </span>
+  </div>
+  <div class="home-trust-item">
+    <span class="home-trust-check" aria-hidden="true">✓</span>
+    <span class="home-trust-body">
+      <span class="home-trust-title">You own everything</span>
+      <span class="home-trust-text">Code, accounts, infrastructure and documentation are handed over and fully yours.</span>
+    </span>
+  </div>
+  <div class="home-trust-item">
+    <span class="home-trust-check" aria-hidden="true">✓</span>
+    <span class="home-trust-body">
+      <span class="home-trust-title">Reply within one business day</span>
+      <span class="home-trust-text">Every enquiry gets a real answer — including an honest “not a fit” when that is the case.</span>
+    </span>
+  </div>
+</div>
+
+<p class="home-trust-more"><a href="/services/#straight-answers-before-you-commit">Read the full commitments and FAQ →</a></p>
+
 <p class="home-eyebrow">Selected work</p>
 
 ## Case Studies

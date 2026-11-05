@@ -161,6 +161,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/assets/logo.svg',
     footer: {
+      message: 'Based in UTC+8 · Remote worldwide · Replies within one business day',
       copyright: 'Copyright © 2024-present Sunquakes Studio'
     },
     search: {

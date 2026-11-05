@@ -1,6 +1,6 @@
 ---
 title: Contact
-description: "Get in touch about custom business software, AI business automation, 3D interactive experiences, or GIS and map projects. Email, contact form, or book a call."
+description: "Get in touch about custom business software, AI automation, 3D or GIS projects. Email, contact form, or a free call — NDA available, replies within one business day."
 aside: false
 ---
 
@@ -76,7 +76,24 @@ If you already know what you need, use the form below. The more context you give
   <button class="pf-submit" type="submit">Send message</button>
 </form>
 
-<p class="pf-note">Submitting this form sends your details straight to our inbox. We never share them with anyone else.</p>
+<p class="pf-note">Submitting this form sends your details straight to our inbox. We never share them with anyone else. Prefer to sign an NDA first? Just say so and we'll send one over before you share anything sensitive.</p>
+
+## What Happens Next
+
+<div class="pf-grid pf-grid-3">
+  <div class="pf-card">
+    <h3>1. We reply within one business day</h3>
+    <p>A real reply from the person who would do the work — including an honest answer if we're not the right fit.</p>
+  </div>
+  <div class="pf-card">
+    <h3>2. A free 30-minute call</h3>
+    <p>We talk through the problem, constraints and timeline, and narrow it to the smallest version that creates real value.</p>
+  </div>
+  <div class="pf-card">
+    <h3>3. A written proposal first</h3>
+    <p>Fixed scope, fixed price and the delivery steps — nothing is charged until you approve it in writing.</p>
+  </div>
+</div>
 
 ## Prefer to Skip the Form?
 

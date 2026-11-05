@@ -648,6 +648,89 @@
   color: var(--vp-c-text-2);
 }
 
+/* Home — risk-reversal commitments ------------------------------------------ */
+
+.home-trust {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin: 32px 0 0;
+}
+
+.home-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid var(--x-card-border);
+  border-radius: 16px;
+  background-color: var(--vp-c-bg-soft);
+  box-shadow: var(--x-inset-sheen);
+  transition:
+    border-color calc(0.25s * var(--x-tempo)),
+    translate calc(0.35s * var(--x-tempo)) var(--x-ease-soft),
+    box-shadow calc(0.35s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+.home-trust-item:hover {
+  border-color: var(--x-ring);
+  translate: 0 -2px;
+  box-shadow: var(--x-shadow);
+}
+
+.home-trust-check {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background-color: var(--x-accent-soft);
+  color: var(--x-accent);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.home-trust-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.home-trust-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--vp-c-text-1);
+}
+
+.home-trust-text {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+}
+
+.x-body p.home-trust-more {
+  margin: 20px 0 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.x-body p.home-trust-more a {
+  color: var(--x-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.x-body p.home-trust-more a:hover {
+  text-decoration: underline;
+}
+
 /* Global map (SVG dot-matrix world map) ------------------------------------- */
 
 .x-body p.home-map-lead {
@@ -2220,6 +2303,62 @@ html.dark .x-hero-bg::before {
   margin: 12px 0 0;
   font-size: 13px;
   color: var(--vp-c-text-3);
+}
+
+/* Services — straight-answers FAQ ------------------------------------------- */
+
+.vp-doc .pf-faq {
+  margin: 12px 0 0;
+  padding: 18px 22px;
+  border: 1px solid var(--x-card-border);
+  border-radius: 14px;
+  background-color: var(--vp-c-bg-soft);
+  box-shadow: var(--x-inset-sheen);
+  transition:
+    border-color calc(0.25s * var(--x-tempo)),
+    box-shadow calc(0.35s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+.vp-doc .pf-faq:hover {
+  border-color: var(--x-ring);
+}
+
+.vp-doc .pf-faq summary {
+  position: relative;
+  padding-right: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  list-style: none;
+}
+
+.vp-doc .pf-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.vp-doc .pf-faq summary::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 0 -50%;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--x-accent);
+}
+
+.vp-doc .pf-faq[open] summary::after {
+  content: '–';
+}
+
+.vp-doc .pf-faq p {
+  margin: 10px 0 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
 }
 
 /* Blog sidebar */

@@ -1,6 +1,6 @@
 ---
 title: Services & Pricing
-description: "Fixed-price custom software: web apps, backend APIs, AI automation, 3D and GIS development — scoped and priced in writing before any work starts."
+description: "Fixed-price custom software: web apps, backend APIs, AI automation, 3D and GIS — with written scope, code ownership and NDA terms agreed before work starts."
 aside: false
 ---
 
@@ -108,6 +108,38 @@ The most common requests, already scoped. If yours doesn't fit, the discovery ca
 </div>
 
 <p class="pf-note">All prices are in USD and include design, development, and deployment. Invoiced net 7, with a 50% deposit to start and the balance on delivery. Nothing is charged before you approve a written proposal. Ongoing support and maintenance retainers, user guides, and team training are quoted separately.</p>
+
+## Straight Answers Before You Commit
+
+<details class="pf-faq">
+  <summary>What if the scope changes mid-project?</summary>
+  <p>The written scope and price are the baseline. If you want something that wasn't in it, we price that addition separately and you approve it before any work starts on it — the original fixed price doesn't move.</p>
+</details>
+
+<details class="pf-faq">
+  <summary>Who owns the code, accounts and data?</summary>
+  <p>You do. Code, repositories, cloud accounts, infrastructure and documentation are handed over at the end of the project and remain yours. Nothing is locked to us.</p>
+</details>
+
+<details class="pf-faq">
+  <summary>When do I pay?</summary>
+  <p>Nothing is charged before you approve a written proposal. A 50% deposit starts the work, and the balance is invoiced on delivery, net 7. All prices are in USD.</p>
+</details>
+
+<details class="pf-faq">
+  <summary>Will you sign an NDA?</summary>
+  <p>Yes — send yours, or we'll use a standard mutual NDA. It's normal to have one in place before we discuss anything sensitive.</p>
+</details>
+
+<details class="pf-faq">
+  <summary>What happens after launch?</summary>
+  <p>Every package includes a post-launch bug-fix window: 30 days on the website or small-app package, and 60 days on custom business software. After that, ongoing support is available as an optional retainer.</p>
+</details>
+
+<details class="pf-faq">
+  <summary>What if you're not the right fit?</summary>
+  <p>We'll say so on the first call and tell you what kind of help you actually need. A short honest answer is cheaper for both of us than a project that shouldn't have started.</p>
+</details>
 
 <div class="pf-cta">
   <h2>Not sure which package fits?</h2>
