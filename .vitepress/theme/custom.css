@@ -3046,3 +3046,108 @@ html {
     display: none;
   }
 }
+
+/* ===========================================================================
+   Layout and accessibility pass
+   Measure, anchor offset, focus visibility and touch targets.
+   =========================================================================== */
+
+/* Keep headings clear of the fixed navigation when an anchor is followed. */
+#app .vp-doc :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: calc(var(--vp-nav-height) + 24px);
+}
+
+/* Interior pages sit on the wide 976px canvas so cards and lists can breathe;
+   running text is pulled back to a comfortable measure instead. */
+#app .VPDoc:not(.has-aside) .vp-doc > div > p {
+  max-width: 72ch;
+}
+
+#app .VPDoc .vp-doc > div > h2,
+#app .VPDoc .vp-doc > div > h3 {
+  text-wrap: balance;
+}
+
+#app .VPDoc .vp-doc p {
+  text-wrap: pretty;
+}
+
+/* Visible keyboard focus that does not rely on colour alone.
+   Only the outline is drawn, so each control keeps its own corner radius. */
+#app :where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--x-accent);
+  outline-offset: 3px;
+}
+
+/* Touch-friendly form controls. */
+.vp-doc .pf-input,
+.vp-doc .pf-select {
+  min-height: 44px;
+}
+
+.vp-doc .pf-select {
+  cursor: pointer;
+}
+
+.vp-doc .pf-submit:focus-visible,
+.vp-doc .pf-plan-cta:focus-visible {
+  outline: 2px solid var(--x-accent);
+  outline-offset: 3px;
+}
+
+/* Sidebar category picker matches the rest of the controls. */
+#app .blog-category-select__control {
+  min-height: 40px;
+  border-radius: 10px;
+}
+
+#app .blog-category-select__control:focus-visible {
+  border-color: var(--x-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--x-accent-soft);
+}
+
+/* Small screens ------------------------------------------------------------ */
+
+@media (max-width: 640px) {
+  #app .VPDoc .vp-doc > div > h1 {
+    font-size: 29px;
+    letter-spacing: -0.03em;
+  }
+
+  #app .VPDoc .vp-doc > div > h2 {
+    font-size: 22px;
+  }
+
+  #app .VPDoc .vp-doc > div > h3 {
+    font-size: 18px;
+  }
+
+  #app .VPDoc.has-aside .vp-doc > div > h2 {
+    margin-top: 42px;
+    padding-top: 24px;
+  }
+
+  #app .VPDoc:not(.has-aside) .vp-doc > div > h1::before {
+    width: 42px;
+    height: 3px;
+    margin-bottom: 16px;
+  }
+
+  .services-page .vp-doc > div > h3 {
+    gap: 10px;
+    margin-top: 36px;
+    font-size: 18px;
+  }
+
+  .services-page .vp-doc > div > h3::before {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    font-size: 11px;
+  }
+
+  .services-page .vp-doc > div > ul {
+    gap: 8px;
+  }
+}
