@@ -2397,3 +2397,652 @@ html.dark .x-hero-bg::before {
 #app .VPDoc.has-aside .content-container {
   max-width: 760px;
 }
+
+/* ===========================================================================
+   Visual refresh
+   Presentation only — every rule below restyles existing markup, no copy is
+   added or changed.
+   =========================================================================== */
+
+:root {
+  --x-font-display: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Align the default theme chrome with the indigo / violet brand palette
+     already used by the home page. */
+  --vp-c-brand-1: #4f46e5;
+  --vp-c-brand-2: #4338ca;
+  --vp-c-brand-3: #3730a3;
+  --vp-c-brand-soft: rgba(99, 102, 241, 0.14);
+  --vp-button-brand-bg: #4f46e5;
+  --vp-button-brand-hover-bg: #4338ca;
+  --vp-button-brand-active-bg: #3730a3;
+}
+
+html.dark {
+  --vp-c-brand-1: #a5b4fc;
+  --vp-c-brand-2: #818cf8;
+  --vp-c-brand-3: #6366f1;
+  --vp-c-brand-soft: rgba(129, 140, 248, 0.16);
+  --vp-button-brand-bg: #6366f1;
+  --vp-button-brand-hover-bg: #818cf8;
+  --vp-button-brand-active-bg: #a5b4fc;
+}
+
+::selection {
+  background-color: rgba(99, 102, 241, 0.24);
+  color: var(--vp-c-text-1);
+}
+
+html {
+  scrollbar-color: color-mix(in srgb, var(--vp-c-text-3) 45%, transparent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--vp-c-text-3) 40%, transparent);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--x-accent) 55%, transparent);
+}
+
+/* Navigation --------------------------------------------------------------- */
+
+#app .VPNavBar {
+  background-color: color-mix(in srgb, var(--vp-c-bg) 78%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+}
+
+#app .VPNavBar::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--x-accent) 34%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+#app .VPNavBarTitle .title {
+  font-family: var(--x-font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+#app .VPNavBarTitle .logo {
+  border-radius: 8px;
+  transition: transform calc(0.35s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+#app .VPNavBarTitle:hover .logo {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+#app .VPNavBarMenuLink {
+  position: relative;
+  font-weight: 500;
+}
+
+#app .VPNavBarMenuLink::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  bottom: 14px;
+  left: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background-image: linear-gradient(90deg, var(--x-accent), var(--x-accent-2), var(--x-accent-3));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform calc(0.35s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+#app .VPNavBarMenuLink:hover::after,
+#app .VPNavBarMenuLink.active::after {
+  transform: scaleX(1);
+}
+
+#app .VPNavBarMenuLink.active {
+  color: var(--x-accent);
+}
+
+#app .VPMenu {
+  border-radius: 14px;
+  box-shadow: var(--x-shadow);
+}
+
+#app .VPNavScreen {
+  background-color: color-mix(in srgb, var(--vp-c-bg) 92%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+}
+
+/* Blog sidebar + outline ---------------------------------------------------- */
+
+#app .VPSidebar {
+  background-color: color-mix(in srgb, var(--vp-c-bg) 92%, var(--vp-c-bg-soft));
+}
+
+#app .VPSidebarItem.is-active > .item .text {
+  font-weight: 600;
+}
+
+#app .VPDocAsideOutline .outline-link {
+  font-size: 12.5px;
+  line-height: 1.55;
+  transition: color 0.25s;
+}
+
+#app .VPDocAsideOutline .outline-link:hover {
+  color: var(--x-accent);
+}
+
+/* Doc typography ------------------------------------------------------------ */
+/* VitePress wraps the rendered markdown in a single inner `div`, so doc-level
+   blocks are targeted with `> div >` to avoid restyling nested components. */
+
+#app .VPDoc .vp-doc > div > h1 {
+  font-family: var(--x-font-display);
+  font-size: clamp(30px, 4.2vw, 44px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+#app .VPDoc .vp-doc > div > h2 {
+  font-family: var(--x-font-display);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.022em;
+}
+
+#app .VPDoc .vp-doc > div > h3 {
+  font-family: var(--x-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+}
+
+#app .VPDoc .vp-doc p,
+#app .VPDoc .vp-doc li {
+  line-height: 1.78;
+}
+
+#app .VPDoc .vp-doc a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* Interior pages (Services, Clients & Cases, Contact, case pages) */
+
+#app .VPDoc:not(.has-aside) .vp-doc > div > h1::before {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 4px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background-image: linear-gradient(90deg, var(--x-accent), var(--x-accent-2), var(--x-accent-3));
+}
+
+#app .VPDoc:not(.has-aside) .vp-doc > div > h1 + p {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--vp-c-text-2);
+}
+
+/* Blog posts keep the outline aside: editorial rules and a slightly larger
+   reading size make long technical posts easier to scan. */
+
+#app .VPDoc.has-aside .vp-doc > div > h1 + p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--vp-c-text-2);
+}
+
+#app .VPDoc.has-aside .vp-doc > div > h2 {
+  margin-top: 54px;
+  padding-top: 30px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+#app .VPDoc.has-aside .vp-doc > div > h2::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 3px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background-image: linear-gradient(90deg, var(--x-accent), var(--x-accent-2));
+}
+
+/* Code, quotes, tables and media inside docs */
+
+#app .VPDoc .vp-doc div[class*='language-'] {
+  margin: 22px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -34px rgba(15, 23, 42, 0.6);
+}
+
+#app .VPDoc .vp-doc div[class*='language-'] > span.lang {
+  top: 10px;
+  right: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+
+#app .VPDoc .vp-doc :not(pre) > code {
+  padding: 0.16em 0.42em;
+  border-radius: 6px;
+  background-color: var(--x-accent-soft);
+  color: var(--x-accent);
+  font-size: 0.87em;
+  font-weight: 500;
+}
+
+#app .VPDoc .vp-doc blockquote {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid var(--x-accent);
+  border-radius: 0 14px 14px 0;
+  background-color: var(--vp-c-bg-soft);
+}
+
+#app .VPDoc .vp-doc blockquote > p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--vp-c-text-2);
+}
+
+#app .VPDoc .vp-doc table {
+  margin: 24px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+#app .VPDoc .vp-doc th {
+  padding: 12px 16px;
+  background-color: var(--vp-c-bg-soft);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#app .VPDoc .vp-doc td {
+  padding: 11px 16px;
+}
+
+#app .VPDoc .vp-doc tbody tr {
+  transition: background-color 0.2s;
+}
+
+#app .VPDoc .vp-doc tbody tr:hover {
+  background-color: var(--x-accent-soft);
+}
+
+#app .VPDoc .vp-doc .custom-block {
+  border-radius: 14px;
+  box-shadow: var(--x-inset-sheen);
+}
+
+#app .VPDoc.has-aside .vp-doc img {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  box-shadow: 0 20px 44px -36px rgba(15, 23, 42, 0.55);
+}
+
+/* Services — numbered capability blocks ------------------------------------- */
+
+.services-page .vp-doc {
+  counter-reset: x-service;
+}
+
+.services-page .vp-doc > div > h3 {
+  counter-increment: x-service;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 48px;
+  font-size: 22px;
+}
+
+.services-page .vp-doc > div > h3::before {
+  content: counter(x-service, decimal-leading-zero);
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--x-ring);
+  border-radius: 11px;
+  background-color: var(--x-accent-soft);
+  font-family: var(--x-font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--x-accent);
+}
+
+.services-page .vp-doc > div > h3 + p {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--vp-c-text-3);
+}
+
+.services-page .vp-doc > div > h3 + p strong {
+  font-weight: 600;
+}
+
+.services-page .vp-doc > div > ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 28px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services-page .vp-doc > div > ul > li {
+  position: relative;
+  margin: 0;
+  padding-left: 25px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+}
+
+.services-page .vp-doc > div > ul > li::before {
+  content: '✓';
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.85;
+  color: var(--x-accent);
+}
+
+@media (max-width: 720px) {
+  .services-page .vp-doc > div > ul {
+    grid-template-columns: 1fr;
+  }
+
+  .services-page .vp-doc > div > h3 {
+    font-size: 19px;
+  }
+}
+
+/* Pricing plans — a softer featured lift */
+
+.vp-doc .pf-plan {
+  background-image:
+    radial-gradient(120% 120% at 0% 0%, var(--x-accent-soft), transparent 55%),
+    linear-gradient(180deg, color-mix(in srgb, var(--vp-c-bg-soft) 60%, transparent), transparent 45%);
+}
+
+.vp-doc .pf-plan--featured {
+  box-shadow:
+    var(--x-inset-sheen),
+    0 24px 50px -32px color-mix(in srgb, var(--x-accent) 55%, transparent);
+}
+
+/* Footer -------------------------------------------------------------------- */
+
+#app .VPFooter {
+  position: relative;
+  border-top: 1px solid var(--vp-c-divider);
+  background-color: color-mix(in srgb, var(--vp-c-bg) 94%, var(--vp-c-bg-soft));
+}
+
+#app .VPFooter::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--x-accent) 26%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+#app .VPFooter .message,
+#app .VPFooter .copyright {
+  font-size: 13px;
+  color: var(--vp-c-text-3);
+}
+
+/* Home — headings, accents and motion --------------------------------------- */
+
+.x-hero-name,
+.x-body h2,
+.x-section-title,
+.x-feature-title {
+  font-family: var(--x-font-display);
+}
+
+.x-grad-text {
+  background-size: 220% 100%;
+  animation: x-sheen 10s linear infinite;
+}
+
+.x-dot {
+  animation: x-pulse 2.6s ease-in-out infinite;
+}
+
+.x-glow-a {
+  animation: x-drift-a 18s ease-in-out infinite alternate;
+}
+
+.x-glow-b {
+  animation: x-drift-b 22s ease-in-out infinite alternate;
+}
+
+.x-hero-halo {
+  animation: x-halo 12s ease-in-out infinite alternate;
+}
+
+.x-window {
+  animation: x-float 10s ease-in-out infinite;
+}
+
+.x-body p.home-eyebrow,
+.x-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.x-body p.home-eyebrow::before,
+.x-body p.home-eyebrow::after,
+.x-eyebrow::before,
+.x-eyebrow::after {
+  content: '';
+  width: 34px;
+  height: 1px;
+  background-image: linear-gradient(90deg, transparent, color-mix(in srgb, var(--x-accent) 55%, transparent));
+}
+
+.x-body p.home-eyebrow::after,
+.x-eyebrow::after {
+  background-image: linear-gradient(90deg, color-mix(in srgb, var(--x-accent) 55%, transparent), transparent);
+}
+
+.x-feature,
+.x-home .home-post,
+.x-home a.pf-card,
+.x-home .pf-card {
+  transition:
+    border-color calc(0.25s * var(--x-tempo)),
+    translate calc(0.35s * var(--x-tempo)) var(--x-ease-soft),
+    box-shadow calc(0.35s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+.x-feature:hover,
+.x-home .home-post:hover,
+.x-home .pf-card:hover {
+  translate: 0 -3px;
+  box-shadow: var(--x-shadow);
+}
+
+.x-feature-icon {
+  transition: transform calc(0.4s * var(--x-tempo)) var(--x-ease-soft);
+}
+
+.x-feature:hover .x-feature-icon {
+  transform: translateY(-2px) scale(1.06);
+}
+
+.home-cta {
+  background-size: 160% 160%;
+  animation: x-cta-shift 16s ease-in-out infinite;
+}
+
+/* Subtle shine sweep on primary buttons */
+
+.x-btn-brand,
+.vp-doc .pf-submit,
+.vp-doc .pf-plan--featured .pf-plan-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.x-btn-brand::after,
+.vp-doc .pf-submit::after,
+.vp-doc .pf-plan--featured .pf-plan-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background-image: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  transform: skewX(-18deg);
+  transition: left calc(0.65s * var(--x-tempo)) var(--x-ease-out);
+  pointer-events: none;
+}
+
+.x-btn-brand:hover::after,
+.vp-doc .pf-submit:hover::after,
+.vp-doc .pf-plan--featured .pf-plan-cta:hover::after {
+  left: 120%;
+}
+
+@keyframes x-sheen {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 220% 50%;
+  }
+}
+
+@keyframes x-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px var(--x-accent-soft);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--x-accent) 6%, transparent);
+  }
+}
+
+@keyframes x-drift-a {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 46px 30px;
+  }
+}
+
+@keyframes x-drift-b {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -40px 24px;
+  }
+}
+
+@keyframes x-halo {
+  from {
+    opacity: 0.72;
+    scale: 0.98;
+  }
+  to {
+    opacity: 0.95;
+    scale: 1.03;
+  }
+}
+
+@keyframes x-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes x-cta-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .x-grad-text,
+  .x-dot,
+  .x-glow-a,
+  .x-glow-b,
+  .x-hero-halo,
+  .x-window,
+  .home-cta {
+    animation: none !important;
+  }
+
+  .x-btn-brand::after,
+  .vp-doc .pf-submit::after,
+  .vp-doc .pf-plan--featured .pf-plan-cta::after {
+    display: none;
+  }
+}

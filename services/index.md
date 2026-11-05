@@ -2,6 +2,7 @@
 title: Services & Pricing
 description: "Fixed-price custom software: web apps, backend APIs, AI automation, 3D and GIS — with written scope, code ownership and NDA terms agreed before work starts."
 aside: false
+pageClass: services-page
 ---
 
 # Services & Pricing
