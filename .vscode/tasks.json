@@ -17,9 +17,26 @@
       "detail": "Start VitePress development server"
     },
     {
+      "label": "docs:clean",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Remove-Item -LiteralPath '.vitepress/dist' -Recurse -Force -ErrorAction SilentlyContinue\"",
+      "problemMatcher": [],
+      "detail": "Permanently delete the VitePress build output (does not use the Recycle Bin)"
+    },
+    {
+      "label": "deps:clean",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Remove-Item -LiteralPath 'node_modules' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath '.pnpm-store' -Recurse -Force -ErrorAction SilentlyContinue\"",
+      "problemMatcher": [],
+      "detail": "Permanently delete node_modules and the pnpm store (does not use the Recycle Bin)"
+    },
+    {
       "label": "docs:build",
       "type": "shell",
       "command": "npm run docs:build",
+      "dependsOn": [
+        "docs:clean"
+      ],
       "group": "build",
       "presentation": {
         "reveal": "always",
