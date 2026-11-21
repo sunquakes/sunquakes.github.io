@@ -184,8 +184,7 @@ export default defineConfig({
     sidebar: blogSidebar,
     blogCategories,
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/sunquakes' },
-      { icon: 'x', link: 'https://x.com/sunquakesio' }
+      { icon: 'github', link: 'https://github.com/sunquakes' }
     ]
   } as DefaultTheme.Config & { blogCategories: BlogCategory[] },
   vite: {
