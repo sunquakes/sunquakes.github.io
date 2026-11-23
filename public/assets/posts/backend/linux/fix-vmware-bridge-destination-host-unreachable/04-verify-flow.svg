@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 300" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#123a5c"/>
+    </marker>
+  </defs>
+  <rect width="840" height="300" rx="14" fill="#f6f8fb"/>
+  <text x="420" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#123a5c">Verification flow inside Ubuntu 22.04</text>
+
+  <!-- Steps -->
+  <g>
+    <rect x="40" y="90" width="150" height="120" rx="10" fill="#ffffff" stroke="#7ea6d9" stroke-width="2"/>
+    <text x="115" y="120" text-anchor="middle" font-size="13.5" font-weight="700" fill="#123a5c">1. ip a</text>
+    <text x="115" y="146" text-anchor="middle" font-size="12.5" fill="#5b7186">ens33 has an IP?</text>
+    <text x="115" y="168" text-anchor="middle" font-size="12.5" fill="#123a5c">192.168.1.x</text>
+    <text x="115" y="188" text-anchor="middle" font-size="12.5" fill="#5b7186">same subnet as host</text>
+
+    <rect x="230" y="90" width="150" height="120" rx="10" fill="#ffffff" stroke="#7ea6d9" stroke-width="2"/>
+    <text x="305" y="120" text-anchor="middle" font-size="13.5" font-weight="700" fill="#123a5c">2. dhclient</text>
+    <text x="305" y="146" text-anchor="middle" font-size="12.5" fill="#5b7186">no IP yet?</text>
+    <text x="305" y="170" text-anchor="middle" font-size="12.5" fill="#123a5c">sudo dhclient ens33</text>
+    <text x="305" y="190" text-anchor="middle" font-size="12.5" fill="#5b7186">request a lease</text>
+
+    <rect x="420" y="90" width="150" height="120" rx="10" fill="#ffffff" stroke="#2f9e6e" stroke-width="2"/>
+    <text x="495" y="120" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f9e6e">3. ping gateway</text>
+    <text x="495" y="146" text-anchor="middle" font-size="12.5" fill="#5b7186">ping 192.168.1.1</text>
+    <text x="495" y="170" text-anchor="middle" font-size="12.5" fill="#123a5c">LAN reachable</text>
+    <text x="495" y="192" text-anchor="middle" font-size="12.5" fill="#2f9e6e">✓ 64 bytes from...</text>
+
+    <rect x="610" y="90" width="190" height="120" rx="10" fill="#ffffff" stroke="#2f9e6e" stroke-width="2"/>
+    <text x="705" y="120" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f9e6e">4. ping internet</text>
+    <text x="705" y="146" text-anchor="middle" font-size="12.5" fill="#5b7186">ping 8.8.8.8</text>
+    <text x="705" y="170" text-anchor="middle" font-size="12.5" fill="#123a5c">public IP reachable</text>
+    <text x="705" y="192" text-anchor="middle" font-size="12.5" fill="#2f9e6e">✓ bridged networking works</text>
+  </g>
+
+  <!-- Arrows -->
+  <line x1="192" y1="150" x2="228" y2="150" stroke="#123a5c" stroke-width="2.5" marker-end="url(#arr2)"/>
+  <line x1="382" y1="150" x2="418" y2="150" stroke="#123a5c" stroke-width="2.5" marker-end="url(#arr2)"/>
+  <line x1="572" y1="150" x2="608" y2="150" stroke="#123a5c" stroke-width="2.5" marker-end="url(#arr2)"/>
+
+  <text x="420" y="260" text-anchor="middle" font-size="13" fill="#5b7186">Gateway replies, then public IP replies → the bridge is healthy. Only DNS may still need a resolver.</text>
+</svg>
