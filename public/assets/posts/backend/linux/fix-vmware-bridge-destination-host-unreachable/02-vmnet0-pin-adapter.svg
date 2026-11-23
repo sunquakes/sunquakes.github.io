@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif">
+  <rect width="840" height="430" rx="14" fill="#f6f8fb"/>
+  <text x="420" y="36" text-anchor="middle" font-size="19" font-weight="700" fill="#123a5c">Virtual Network Editor — pin VMnet0 to the active NIC</text>
+
+  <!-- Window -->
+  <rect x="60" y="60" width="520" height="330" rx="10" fill="#ffffff" stroke="#b9cfe8" stroke-width="2"/>
+  <rect x="60" y="60" width="520" height="40" rx="10" fill="#123a5c"/>
+  <rect x="60" y="86" width="520" height="14" fill="#123a5c"/>
+  <text x="80" y="86" font-size="14" font-weight="700" fill="#ffffff">Virtual Network Editor  ·  Run as administrator → Change Settings</text>
+
+  <!-- VMnet rows -->
+  <rect x="84" y="120" width="472" height="42" rx="7" fill="#eef3f9"/>
+  <text x="100" y="146" font-size="13.5" fill="#5b7186">VMnet1   Host-only</text>
+  <rect x="84" y="172" width="472" height="42" rx="7" fill="#eef3f9"/>
+  <text x="100" y="198" font-size="13.5" fill="#5b7186">VMnet8   NAT</text>
+  <rect x="84" y="224" width="472" height="52" rx="7" fill="#dbe7f5" stroke="#123a5c" stroke-width="2"/>
+  <text x="100" y="246" font-size="13.5" font-weight="700" fill="#123a5c">VMnet0   Bridged</text>
+  <rect x="100" y="254" width="440" height="16" fill="none"/>
+  <text x="100" y="268" font-size="12.5" fill="#123a5c">Bridged to: Intel(R) Wi-Fi 6 AX201 160MHz</text>
+
+  <!-- Dropdown mock -->
+  <rect x="84" y="296" width="472" height="76" rx="7" fill="#ffffff" stroke="#b9cfe8"/>
+  <text x="100" y="318" font-size="12.5" fill="#d9534f">✕  Bridged: Automatic</text>
+  <text x="100" y="340" font-size="12.5" fill="#2f9e6e">✓  Intel(R) Wi-Fi 6 AX201 160MHz   ← currently online</text>
+  <text x="100" y="362" font-size="12.5" fill="#5b7186">     Realtek PCIe GbE Family Controller (cable unplugged)</text>
+
+  <!-- Side notes -->
+  <rect x="612" y="80" width="200" height="120" rx="10" fill="#fdeceb" stroke="#d9534f" stroke-width="1.5"/>
+  <text x="628" y="106" font-size="13.5" font-weight="700" fill="#d9534f">❌ Automatic</text>
+  <text x="628" y="130" font-size="12.5" fill="#5b7186">May latch onto VPN,</text>
+  <text x="628" y="148" font-size="12.5" fill="#5b7186">Hyper-V or idle adapters</text>
+  <text x="628" y="166" font-size="12.5" fill="#5b7186">→ Destination Host</text>
+  <text x="628" y="184" font-size="12.5" fill="#5b7186">Unreachable</text>
+
+  <rect x="612" y="220" width="200" height="120" rx="10" fill="#e9f6ef" stroke="#2f9e6e" stroke-width="1.5"/>
+  <text x="628" y="246" font-size="13.5" font-weight="700" fill="#2f9e6e">✅ Pinned NIC</text>
+  <text x="628" y="270" font-size="12.5" fill="#5b7186">Wi-Fi online → pick the</text>
+  <text x="628" y="288" font-size="12.5" fill="#5b7186">wireless adapter</text>
+  <text x="628" y="312" font-size="12.5" fill="#5b7186">Cable online → pick Ethernet</text>
+
+  <text x="712" y="380" text-anchor="middle" font-size="13" font-weight="700" fill="#123a5c">Apply → OK</text>
+</svg>

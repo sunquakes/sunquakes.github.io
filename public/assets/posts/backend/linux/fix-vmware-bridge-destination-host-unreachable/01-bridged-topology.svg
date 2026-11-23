@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#123a5c"/>
+    </marker>
+  </defs>
+  <rect width="840" height="430" rx="14" fill="#f6f8fb"/>
+  <text x="420" y="36" text-anchor="middle" font-size="19" font-weight="700" fill="#123a5c">Bridged mode: the VM is its own device on the LAN</text>
+
+  <!-- Router -->
+  <rect x="330" y="60" width="180" height="58" rx="10" fill="#123a5c"/>
+  <text x="420" y="86" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Home / office router</text>
+  <text x="420" y="106" text-anchor="middle" font-size="12.5" fill="#c9d9ec">gateway 192.168.1.1 · DHCP server</text>
+
+  <!-- Host -->
+  <rect x="60" y="250" width="300" height="120" rx="12" fill="#ffffff" stroke="#7ea6d9" stroke-width="2"/>
+  <text x="210" y="280" text-anchor="middle" font-size="15" font-weight="700" fill="#123a5c">Windows host</text>
+  <rect x="90" y="296" width="240" height="34" rx="7" fill="#dbe7f5"/>
+  <text x="210" y="318" text-anchor="middle" font-size="13" fill="#123a5c">Physical NIC · 192.168.1.10</text>
+  <text x="210" y="352" text-anchor="middle" font-size="12" fill="#5b7186">Wi-Fi or Ethernet, has internet</text>
+
+  <!-- VMware box -->
+  <rect x="470" y="200" width="310" height="210" rx="12" fill="none" stroke="#7ea6d9" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="625" y="228" text-anchor="middle" font-size="13.5" font-weight="700" fill="#5b7186">VMware Workstation</text>
+  <rect x="500" y="246" width="250" height="44" rx="8" fill="#eef3f9" stroke="#b9cfe8"/>
+  <text x="625" y="273" text-anchor="middle" font-size="13" fill="#123a5c">VMnet0 bridge (tap)</text>
+  <rect x="500" y="310" width="250" height="76" rx="8" fill="#123a5c"/>
+  <text x="625" y="338" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Ubuntu 22.04 VM · ens33</text>
+  <text x="625" y="364" text-anchor="middle" font-size="13" fill="#c9d9ec">192.168.1.20 — same subnet as host</text>
+
+  <!-- Links -->
+  <line x1="360" y1="118" x2="230" y2="250" stroke="#123a5c" stroke-width="2.5" marker-end="url(#arr)"/>
+  <line x1="480" y1="118" x2="610" y2="246" stroke="#123a5c" stroke-width="2.5" marker-end="url(#arr)"/>
+  <line x1="330" y1="310" x2="500" y2="270" stroke="#2f9e6e" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <text x="418" y="266" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2f9e6e">bridged onto the NIC</text>
+  <text x="150" y="190" font-size="12.5" fill="#5b7186">DHCP + traffic</text>
+  <text x="600" y="160" font-size="12.5" fill="#5b7186">DHCP + traffic, direct to router</text>
+</svg>
